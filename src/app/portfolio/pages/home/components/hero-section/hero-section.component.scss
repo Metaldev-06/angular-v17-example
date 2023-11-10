@@ -36,6 +36,11 @@
         cursor: pointer;
         transition: opacity 0.3s, transform 0.3s;
 
+        i {
+          font-size: 25px;
+          padding: 5px 0;
+        }
+
         &:hover {
           opacity: 1;
           transform: scale(1.1);

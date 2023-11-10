@@ -2,13 +2,9 @@
   <article class="hero__content">
     <div class="redes">
       @for (social of socials(); track social) {
-      <a [href]="social.url" target="_blank"
-        ><img
-          [src]="social.path"
-          [alt]="social.name"
-          [width]="social.width"
-          [height]="social.height"
-      /></a>
+      <a [href]="social.url" target="_blank">
+        <i class="pi" [ngClass]="social.path" [title]="social.name"></i>
+      </a>
       }
     </div>
 
