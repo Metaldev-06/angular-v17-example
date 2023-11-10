@@ -1,10 +1,5 @@
 import { NgStyle } from '@angular/common';
-import {
-  ChangeDetectionStrategy,
-  Component,
-  HostListener,
-  signal,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
 
 interface Image {
   name: string;
@@ -46,13 +41,4 @@ export class HeroSectionComponent {
       height: '30',
     },
   ]);
-
-  public lightX = 0;
-  public lightY = 0;
-
-  @HostListener('mousemove', ['$event'])
-  onMouseMove(event: MouseEvent) {
-    this.lightX = event.clientX;
-    this.lightY = event.clientY;
-  }
 }
