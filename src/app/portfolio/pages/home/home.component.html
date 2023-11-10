@@ -3,13 +3,13 @@
 @defer (on viewport) {
 <app-about-me-section [aboutMe]="userData()" />
 }@placeholder {
-<p>loading</p>
+<app-loader />
 } @defer (on viewport) {
 <app-projects-section [projects]="userData().projects.data" />
 }@placeholder {
-<p>loading</p>
+<app-loader />
 } @defer (on viewport) {
 <app-blogs-section />
 }@placeholder {
-<p>loading</p>
+<app-loader />
 }

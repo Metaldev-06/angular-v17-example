@@ -12,6 +12,7 @@ import { HomeDataService } from '@src/app/core/services/home-data/home-data.serv
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ProjectsSectionComponent } from './components/projects-section/projects-section.component';
 import { BlogsSectionComponent } from './components/blogs-section/blogs-section.component';
+import { LoaderComponent } from '@src/app/shared/loader/loader.component';
 
 @Component({
   selector: 'app-home',
@@ -21,6 +22,7 @@ import { BlogsSectionComponent } from './components/blogs-section/blogs-section.
     AboutMeSectionComponent,
     ProjectsSectionComponent,
     BlogsSectionComponent,
+    LoaderComponent,
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',

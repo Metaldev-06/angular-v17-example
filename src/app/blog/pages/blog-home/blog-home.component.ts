@@ -40,10 +40,6 @@ export class BlogHomeComponent {
   ngOnInit(): void {
     this.getPosts();
 
-    if (this.page().page === this.page().pageCount) {
-      this.showButtonPage.set(false);
-    }
-
     document.documentElement.scrollTop = 0;
   }
 
@@ -53,6 +49,10 @@ export class BlogHomeComponent {
       .subscribe((res) => {
         this.posts.set(res.data);
         this.page.set(res.meta?.pagination);
+
+        if (this.page().page === this.page().pageCount) {
+          this.showButtonPage.set(false);
+        }
       });
 
     if (this.posts()) {
@@ -66,6 +66,10 @@ export class BlogHomeComponent {
         this.posts.set(res.data);
         this.blogDataService.setBlogData(res);
         this.page.set(res.meta.pagination);
+
+        if (this.page().page === this.page().pageCount) {
+          this.showButtonPage.set(false);
+        }
       });
   }
 
