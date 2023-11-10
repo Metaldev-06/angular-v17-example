@@ -1,0 +1,57 @@
+<section class="dialog__container">
+  <article class="dialog__image">
+    <img
+      [src]="data.project.image.data[0].attributes.url"
+      [alt]="data.project.name"
+    />
+  </article>
+
+  <article class="dialog__content">
+    <div class="dialog__header">
+      <h2>{{ data.project.name | titlecase }}</h2>
+
+      <div class="dialog__deploy">
+        <span
+          >Estado del front:
+          <i
+            class="pi pi-circle-fill"
+            [ngClass]="{
+              online: data.project.deploy_status,
+              offline: !data.project.deploy_status
+            }"
+          ></i>
+        </span>
+
+        @if (data.project.server_status !== null) {
+        <span
+          >Estado del backend:
+          <i
+            class="pi pi-circle-fill"
+            [ngClass]="{
+              online: data.project.server_status,
+              offline: !data.project.server_status
+            }"
+          ></i>
+        </span>
+        } @else {
+        <span title="No necesita un backend">
+          Estado del backend:
+          <i class="pi pi-circle-fill withoutServer"></i>
+        </span>
+        }
+      </div>
+    </div>
+
+    <div class="technologies__container">
+      @for (item of data.project.technology; track item) {
+      <span class="tags">
+        {{ item | titlecase }}
+      </span>
+      }
+    </div>
+
+    <div>
+      <p>{{ data.project.description }}</p>
+    </div>
+  </article>
+</section>

@@ -1,0 +1,8 @@
+@import "src/_variables.scss";
+
+.blog__container {
+  width: 100%;
+  background-color: $background-blog;
+  z-index: 1;
+  position: relative;
+}

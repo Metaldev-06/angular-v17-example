@@ -1,0 +1,15 @@
+@defer (when userData()) {
+<div class="portfolio__container">
+  <app-header />
+
+  <main>
+    <router-outlet />
+  </main>
+
+  <app-footer />
+</div>
+}@loading ( ) {
+<app-loader />
+} @error {
+<p>Error al cargar los datos</p>
+}

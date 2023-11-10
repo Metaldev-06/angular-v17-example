@@ -1,0 +1,197 @@
+@import "src/_variables.scss";
+
+section {
+  margin: 10rem auto;
+  background-position: center;
+  background-size: cover;
+}
+
+.contact__container {
+  width: 95%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4rem;
+  // border: 1px solid $color-white;
+  border-radius: $border-radius-x2;
+  // padding: 1rem;
+  // box-shadow: 0 0 20px $color-black;
+  // box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.2);
+
+
+  @include media-up(screenXs) {
+    flex-direction: column;
+  }
+
+  .contact__content {
+    width: 100%;
+    max-width: 550px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 4rem;
+  }
+
+  .contact__left {
+    text-align: center;
+    letter-spacing: 1.5px;
+
+    .email {
+      .contact__subtitle {
+        font-size: 1.3rem;
+        font-weight: 700;
+        color: $text-color;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      a {
+        font-size: 1rem;
+        font-weight: 400;
+        text-decoration: solid 1px $text-color;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+
+  .contact__rigth {
+    padding: 2rem 1.5rem;
+    box-shadow: -10px 10px 10px 5px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+
+    .form__container {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 1rem;
+
+      .input-container {
+        position: relative;
+        margin: 20px;
+      }
+
+      .input-field {
+        display: block;
+        width: 100%;
+        padding: 10px;
+        font-size: 16px;
+        border: none;
+        border-bottom: 2px solid #b0b0b0;
+        outline: none;
+        background-color: transparent;
+      }
+
+      /* Input label */
+      .input-label {
+        position: absolute;
+        top: 0;
+        left: 0;
+        font-size: 16px;
+        color: rgba(204, 204, 204, 0);
+        pointer-events: none;
+        transition: all 0.3s ease;
+      }
+
+      /* Input highlight */
+      .input-highlight {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        height: 2px;
+        width: 0;
+        background-color: rgb(23, 18, 18);
+        transition: all 0.3s ease;
+      }
+
+      /* Input field:focus styles */
+      .input-field:focus+.input-label {
+        top: -20px;
+        font-size: 12px;
+        color: white;
+      }
+
+      .input-field:focus+.input-label+.input-highlight {
+        width: 100%;
+      }
+
+      .input-field {
+        color: $text-color;
+        resize: none;
+      }
+
+      .input-field::placeholder {
+        color: $text-color;
+        opacity: 0.8;
+      }
+
+      button {
+        display: inline-block;
+        border-radius: 4px;
+        background-color: transparent;
+        border: none;
+        color: #ffffff;
+        text-align: center;
+        font-size: 17px;
+        padding: 16px;
+        width: 100%;
+        transition: all 0.5s;
+        cursor: pointer;
+        margin: 5px;
+        box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.4);
+      }
+
+      button span {
+        cursor: pointer;
+        display: inline-block;
+        position: relative;
+        transition: 0.5s;
+      }
+
+      button span:after {
+        content: "»";
+        position: absolute;
+        opacity: 0;
+        top: 0;
+        right: -15px;
+        transition: 0.5s;
+      }
+
+      button:hover span {
+        padding-right: 15px;
+      }
+
+      button:hover span:after {
+        opacity: 1;
+        right: 0;
+      }
+
+      textarea {
+        height: 100px;
+      }
+    }
+  }
+}
+
+.message {
+  padding: 1rem;
+  background-color: $color-white;
+  position: absolute;
+  border-radius: $border-radius-x2;
+  bottom: 7rem;
+  right: 1rem;
+  color: $color-black;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @include media-up(mobile) {
+    bottom: 10rem;
+  }
+}

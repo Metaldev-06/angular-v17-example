@@ -1,0 +1,80 @@
+<section class="container">
+  <div class="contact__container">
+    <article class="contact__content contact__left">
+      <h2>CONTACTO</h2>
+      <p>
+        Gracias por visitar mi portafolio. Si tienes alguna pregunta, comentario
+        o simplemente quieres saludar, no dudes en ponerte en contacto conmigo.
+        Siempre estaré feliz de escuchar tus ideas y colaborar en proyectos
+        interesantes. Puedes contactar conmigo a través del formulario de
+        contacto o vía correo electrónico. ¡Espero con interés escuchar de usted
+        pronto!
+      </p>
+
+      <div class="email">
+        <p class="contact__subtitle">E-MAIL:</p>
+        <a href="mailto:fernydiaz62@gmail.com">fernydiaz62&#64;gmail.com</a>
+      </div>
+    </article>
+    <article class="contact__content contact__rigth">
+      <h2>FORMULARIO DE CONTACTO</h2>
+
+      <form
+        class="form__container"
+        [formGroup]="datos"
+        (ngSubmit)="envioCorreo()"
+      >
+        <div class="input-container">
+          <input
+            placeholder="Email:"
+            class="input-field"
+            type="email"
+            autocomplete="none"
+            formControlName="email"
+          />
+          <label for="input-field" class="input-label">Email:</label>
+          <span class="input-highlight"></span>
+        </div>
+
+        <div class="input-container">
+          <input
+            placeholder="Asunto:"
+            class="input-field"
+            type="text"
+            autocomplete="none"
+            formControlName="asunto"
+          />
+          <label for="input-field" class="input-label">Asunto:</label>
+          <span class="input-highlight"></span>
+        </div>
+
+        <div class="input-container">
+          <textarea
+            placeholder="Mensaje"
+            class="input-field"
+            type="text"
+            autocomplete="none"
+            formControlName="mensaje"
+          ></textarea>
+          <label for="input-field" class="input-label">Mensaje:</label>
+          <span class="input-highlight"></span>
+        </div>
+
+        <button type="submit" class="button">
+          @if (!isLoading()) {
+          <span>ENVIAR MENSAJE</span>
+          }@else {
+          <span>
+            ENVIANDO MENSAJE
+            <i class="pi pi-spin pi-spinner"></i>
+          </span>
+          }
+        </button>
+      </form>
+    </article>
+  </div>
+</section>
+
+@if (message().length > 0) {
+<span class="message">{{ message() }}</span>
+}

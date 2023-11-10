@@ -1,0 +1,20 @@
+@import "src/_variables.scss";
+
+
+.blogs__container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+
+  .titlte__container {
+    text-align: center;
+  }
+
+  .blogs__card--container {
+    width: 100%;
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  }
+}

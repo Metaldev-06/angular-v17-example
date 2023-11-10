@@ -1,0 +1,25 @@
+@import "src/_mediaqueries.scss";
+
+$background-color: #292929;
+$card-color: #2a2a2a;
+$text-color: #dddddd;
+$color-complementary: #d349c9;
+
+$color-white: #dddddd;
+$color-black: #202020;
+$card-black-secondary: #2a2a2a;
+$color-green: #2a9d8f;
+$color-red: #e63946;
+$color-orange: #ffa500;
+
+$border-radius-x1: 4px;
+$border-radius-x2: 8px;
+$border-radius-searcher: 50px;
+
+$card-backdrop: blur(20px) saturate(100%);
+$card-color: rgba(255, 255, 255, 0.09);
+
+$background-blog: #1B1F1F;
+$header-blog: #212529;
+$code-blog: #282C34;
+$clipboard-color: rgba(176, 176, 176, 0.701);

@@ -1,0 +1,59 @@
+<header
+  class="header__container"
+  (scroll)="activeHeader()"
+  [ngClass]="headerFixed ? 'fixedHeader' : ''"
+>
+  <div class="header">
+    <div class="header__logo">
+      <img
+        src="/assets/logo_solo_nuevo.svg"
+        alt="Metaldev Logo"
+        width="60"
+        height="61"
+        [routerLink]="['']"
+      />
+    </div>
+
+    <nav class="header__navbar">
+      <ul class="navbar__list">
+        @for (item of navItems(); track item) {
+        <li
+          class="navbar__list--item"
+          [routerLink]="[item.route]"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+        >
+          {{ item.name | uppercase }}
+        </li>
+        }
+      </ul>
+
+      <button (click)="sidebarVisible2 = true">
+        <i class="pi pi-bars"></i>
+      </button>
+    </nav>
+  </div>
+</header>
+
+<p-sidebar
+  [(visible)]="sidebarVisible2"
+  position="right"
+  [style]="{ zIndex: 'none' }"
+>
+  <div class="sidebar__container">
+    <h3>Menú</h3>
+
+    <ul class="navbar__list--secondary">
+      @for (item of navItems(); track item) {
+      <li
+        class="navbar__list--item"
+        [routerLink]="[item.route]"
+        routerLinkActive="active--secondary"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
+        {{ item.name | uppercase }}
+      </li>
+      }
+    </ul>
+  </div>
+</p-sidebar>

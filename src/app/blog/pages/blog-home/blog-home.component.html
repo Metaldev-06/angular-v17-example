@@ -1,0 +1,46 @@
+<section class="home__container">
+  <article class="image__container">
+    <img src="assets/banner__background.jpg" alt="background" />
+
+    <div class="banner__content">
+      <div class="text__container">
+        <h1>
+          Aprende <br />
+          las buenas prácticas
+        </h1>
+        <p>Tu lugar para aprender programación web</p>
+      </div>
+
+      <div class="image__container--banner">
+        <img src="assets/banner__background--logo.png" alt="background image" />
+      </div>
+    </div>
+  </article>
+
+  <article class="post__container container">
+    <h2>Últimos Post</h2>
+    @if (posts()) {
+    <div class="card__container">
+      @for (post of posts(); track post) {
+      <app-card-post [post]="post" />
+      }
+    </div>
+
+    }@else {
+    <app-skeleton-post-card />
+    }
+  </article>
+
+  @if (showButtonPage()) {
+
+  <div class="button__container">
+    <button
+      class="button custom__button--line"
+      (click)="nextPage()"
+      [ngStyle]="{ opacity: showButtonPage() ? 1 : 0.4 }"
+    >
+      Ver más
+    </button>
+  </div>
+  }
+</section>

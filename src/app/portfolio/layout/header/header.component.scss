@@ -1,0 +1,113 @@
+@import "src/_variables.scss";
+
+.header__container {
+  width: 100%;
+  margin: 0 auto;
+  height: 12vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1100;
+  -webkit-tap-highlight-color: transparent;
+
+  .header {
+    width: 95%;
+    max-width: 1400px;
+    height: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .header__logo {
+      img {
+        cursor: pointer;
+      }
+    }
+
+    .header__navbar {
+      .navbar__list {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        cursor: pointer;
+        font-weight: 500;
+
+        @include media-up(tabletXS) {
+          display: none;
+        }
+
+        .navbar__list--item {
+          padding: 0.5rem 1rem;
+          opacity: 0.8;
+          transition: opacity 0.3s ease-in-out;
+
+          &:hover {
+            opacity: 1;
+          }
+        }
+      }
+
+      button {
+        padding: .5rem;
+        border-radius: $border-radius-x1;
+        display: none;
+
+        @include media-up(tabletXS) {
+          display: block;
+        }
+      }
+    }
+  }
+}
+
+.fixedHeader {
+  height: 12vh;
+  position: fixed;
+  top: 0;
+  background: rgb(0, 0, 0);
+  background: linear-gradient(0deg,
+      rgba(0, 0, 0, 0) 0%,
+      rgba(0, 0, 0, 0.8407738095238095) 100%);
+  backdrop-filter: blur(15px);
+  user-select: none;
+  z-index: 1100;
+  // animation: headerEnter 0.3s;
+}
+
+.active {
+  opacity: 1;
+  font-weight: bold;
+  color: white;
+}
+
+:host ::ng-deep .p-sidebar {
+  background-color: $color-white;
+
+}
+
+.sidebar__container {
+  width: 100%;
+  text-align: center;
+
+  h3 {
+    font-size: 1.5rem;
+    padding-bottom: 1rem;
+  }
+
+  .navbar__list--secondary {
+    display: flex;
+    flex-direction: column;
+    gap: .3rem;
+
+    .navbar__list--item {
+      padding: .5rem;
+      cursor: pointer;
+    }
+  }
+}
+
+.active--secondary {
+  font-weight: bold;
+  background-color: $clipboard-color;
+}

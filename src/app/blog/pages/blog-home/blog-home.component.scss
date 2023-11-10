@@ -1,0 +1,129 @@
+@import "src/_variables.scss";
+
+.home__container {
+  min-height: calc(100vh - 124px);
+
+  .image__container {
+    max-width: 100%;
+    height: 400px;
+    overflow: hidden;
+
+    @include media-up(mobileXL) {
+      height: 200px;
+    }
+
+    img {
+      width: 100%;
+      height: 400px;
+      display: block;
+      z-index: -1;
+      object-fit: cover;
+      position: absolute;
+
+      @include media-up(mobileXL) {
+        height: 200px;
+      }
+    }
+
+    .banner__content {
+      width: 95%;
+      max-width: 1400px;
+      height: 400px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      @include media-up(mobileXL) {
+        height: 200px;
+      }
+
+      .text__container {
+        @include media-up(mobile) {
+          width: 100%;
+        }
+
+        h1 {
+          font-size: 3rem;
+
+          @include media-up(screenXs) {
+            font-size: 2rem;
+          }
+
+          @include media-up(mobile) {
+            font-size: 1rem;
+          }
+        }
+
+        p {
+          @include media-up(mobile) {
+            font-size: .8rem;
+          }
+        }
+      }
+
+      .image__container--banner {
+        width: 300px;
+        height: 300px;
+
+        @include media-up(screenXs) {
+          width: 100px;
+          height: 100px;
+        }
+
+        @include media-up(mobile) {
+          display: none;
+        }
+
+        img {
+          width: 300px;
+          height: 300px;
+
+          @include media-up(screenXs) {
+            width: 100px;
+            height: 100px;
+          }
+        }
+      }
+    }
+  }
+
+  .post__container {
+    width: 95%;
+    margin: 4rem auto;
+
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .card__container {
+      display: grid;
+      gap: 2rem;
+      grid-template-columns: repeat(auto-fill, minmax(325px, 1fr));
+
+      @include media-up(mobile) {
+        display: flex;
+        justify-content: center;
+        align-items: baseline;
+        flex-wrap: wrap;
+        gap: 1rem;
+      }
+
+    }
+  }
+
+  .button__container {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 2rem;
+
+  }
+}
+
+.example {
+  width: 1400px;
+  margin: 0 auto;
+  border-radius: $border-radius-x2;
+  overflow: hidden;
+}

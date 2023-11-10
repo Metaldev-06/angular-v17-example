@@ -1,0 +1,16 @@
+@import "src/_variables.scss";
+
+input {
+  width: 100%;
+  height: 39px;
+  border-radius: $border-radius-searcher;
+  padding-left: 1rem;
+  background-color: $header-blog;
+  border: 1px solid $card-color;
+  color: $color-white;
+
+  &:focus {
+    box-shadow: 0 0 15px $card-color;
+    // border: 1px solid $color-white;
+  }
+}

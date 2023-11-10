@@ -1,0 +1,44 @@
+@if (isPrimary) {
+<div class="atropos des-atropos" [ngClass]="clase">
+  <div class="atropos-scale">
+    <div class="atropos-rotate">
+      <div class="atropos-inner">
+        <div class="template__card">
+          <img
+            class="image__front"
+            [src]="item.image.data.attributes.url"
+            data-atropos-offset="2"
+            [alt]="item.name"
+            width="170"
+            height="150"
+          />
+
+          <div class="text-over" data-atropos-offset="3">
+            <h2 data-atropos-opacity="0;1">{{ item.name | titlecase }}</h2>
+            <!-- <p>{{ item.description }}</p> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+}@else {
+<div class="atropos des-atropos atropos__container" [ngClass]="clase">
+  <div class="atropos-scale">
+    <div class="atropos-rotate">
+      <div class="atropos-inner">
+        <div class="template__card--secondary">
+          <img
+            class="image__front--secondary"
+            [src]="education.image | imagePipe"
+            data-atropos-offset="2"
+            [alt]="education.name"
+            width="170"
+            height="150"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+}

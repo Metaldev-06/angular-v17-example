@@ -1,0 +1,24 @@
+<div class="post__card" [routerLink]="['/blog/post', post.attributes.slug]">
+  <div class="card__image">
+    <img
+      [src]="post.attributes.image.data.attributes.formats.medium.url"
+      [alt]="post.attributes.title"
+    />
+  </div>
+
+  <div class="card__text">
+    <h3>{{ post.attributes.title | titlecase }}</h3>
+
+    <span>{{
+      post.attributes.publishedAt | date : "longDate" : "UTC-3" : "es-AR"
+    }}</span>
+
+    @for (technology of post.attributes.technology; track technology) {
+    <div class="badge">
+      <span>{{ technology | titlecase }}</span>
+    </div>
+    }
+
+    <p>{{ post.attributes.description }}</p>
+  </div>
+</div>

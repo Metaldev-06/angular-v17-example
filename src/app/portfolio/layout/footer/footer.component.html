@@ -1,0 +1,33 @@
+<footer
+  class="footer__container"
+  [ngClass]="{ alternative__background: alternativeBackground }"
+>
+  <div class="footer__content">
+    <div class="social">
+      <a
+        href="https://github.com/Metaldev-06"
+        aria-label="Visita mí página de GitHub"
+        target="_blank"
+      >
+        <i class="pi pi-github"></i>
+      </a>
+      <a
+        href="https://www.linkedin.com/in/fernandodiaz62/"
+        aria-label="Visita mí página de Linkedin"
+        target="_blank"
+      >
+        <i class="pi pi-linkedin"></i>
+      </a>
+      <a
+        href="https://twitter.com/MetalDev_06"
+        aria-label="Visita mí página de Twitter"
+        target="_blank"
+      >
+        <i class="pi pi-twitter"></i>
+      </a>
+    </div>
+    <span> &copy; Diseñado por MetalDev - {{ year }} </span>
+
+    <span class="contact" routerLink="/contact">Contacto</span>
+  </div>
+</footer>

@@ -1,0 +1,11 @@
+.skeleton__container {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fill, minmax(356px, 1fr));
+
+  div {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+}

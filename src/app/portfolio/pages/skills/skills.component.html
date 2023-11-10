@@ -1,0 +1,59 @@
+<section class="skills__container container">
+  <app-title [title]="'habilidades'" />
+
+  <article class="skills__card--container">
+    <div class="skill__stack">
+      <h2>Frontend</h2>
+      <div class="skills__content">
+        @for (skill of frontend();track skill ; let index = $index) {
+        <app-atropos
+          [item]="skill.attributes"
+          [clase]="skill.attributes.name"
+          [isPrimary]="true"
+        ></app-atropos>
+        }
+      </div>
+    </div>
+
+    <div class="skill__stack">
+      <h2>Backend</h2>
+      <div class="skills__content">
+        @for (skill of backend();track skill ; let index = $index) {
+        <app-atropos
+          [item]="skill.attributes"
+          [clase]="skill.attributes.name"
+          [isPrimary]="true"
+        ></app-atropos>
+        }
+      </div>
+    </div>
+
+    <div class="skill__stack">
+      <h2>Base de Datos</h2>
+
+      <div class="skills__content">
+        @for (skill of database();track skill ; let index = $index) {
+        <app-atropos
+          [item]="skill.attributes"
+          [clase]="skill.attributes.name"
+          [isPrimary]="true"
+        ></app-atropos>
+        }
+      </div>
+    </div>
+
+    <div class="skill__stack">
+      <h2>Librerías</h2>
+
+      <div class="skills__content">
+        @for (skill of library();track skill ; let index = $index) {
+        <app-atropos
+          [item]="skill.attributes"
+          [clase]="skill.attributes.name"
+          [isPrimary]="true"
+        ></app-atropos>
+        }
+      </div>
+    </div>
+  </article>
+</section>

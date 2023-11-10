@@ -1,0 +1,27 @@
+<section class="hero__container">
+  <article class="hero__content">
+    <div class="redes">
+      @for (social of socials(); track social) {
+      <a [href]="social.url" target="_blank"
+        ><img
+          [src]="social.path"
+          [alt]="social.name"
+          [width]="social.width"
+          [height]="social.height"
+      /></a>
+      }
+    </div>
+
+    <div class="scroll">SCROLL</div>
+  </article>
+
+  <article class="scrolling-image-container">
+    <div class="scrolling-image"></div>
+  </article>
+
+  <article
+    class="light"
+    #ligth
+    [ngStyle]="{ top: lightY + 'px', left: lightX + 'px' }"
+  ></article>
+</section>

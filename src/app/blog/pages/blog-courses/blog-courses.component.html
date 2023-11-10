@@ -1,0 +1,33 @@
+<section class="courses__container container">
+  <article></article>
+  @if (courses().length > 0) {
+  <article class="courses__card--container">
+    @for (course of courses(); track course) {
+    <div class="courses__card">
+      <div class="course__image">
+        <img
+          [src]="course.attributes.image.data.attributes.formats.medium.url"
+          [alt]="course.attributes.title"
+        />
+      </div>
+
+      <div class="course__text">
+        <p>{{ course.attributes.title }}</p>
+
+        <div class="button__container">
+          <a
+            [href]="course.attributes.url"
+            aria-label="Ver video"
+            target="_blank"
+          >
+            <button class="button custom__button--line">Ver video</button>
+          </a>
+        </div>
+      </div>
+    </div>
+    }
+  </article>
+  }@else {
+  <app-skeleton-post-card [items]="[1, 2, 3, 4, 5, 6, 7, 8]" />
+  }
+</section>

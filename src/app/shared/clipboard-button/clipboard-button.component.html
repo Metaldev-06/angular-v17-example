@@ -1,0 +1,11 @@
+<button
+  (click)="onClick()"
+  [ngStyle]="{
+    border: copied() ? '1px solid #2a9d8f' : '',
+    color: copied() ? '#2a9d8f' : ''
+  }"
+>
+  <i class="pi" [ngClass]="{ 'pi-check': copied(), 'pi-copy': !copied() }"></i>
+
+  <span *ngIf="copied()">Copiado</span>
+</button>

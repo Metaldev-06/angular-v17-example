@@ -1,0 +1,17 @@
+<section class="blogs__container container">
+  <div class="titlte__container">
+    <app-title [title]="'blog'" [routerLink]="['/blog']" />
+  </div>
+
+  @if (posts().length > 0) {
+  <article class="blogs__card--container">
+    @for (post of posts(); track post) {
+    <app-card-post [post]="post" />
+    }
+  </article>
+  }@else {
+  <app-skeleton-post-card [items]="[1, 2, 3, 4]" />
+  }
+</section>
+
+<ng-template #skeleton2> </ng-template>

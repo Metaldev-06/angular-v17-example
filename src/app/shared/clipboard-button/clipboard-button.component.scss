@@ -1,0 +1,17 @@
+@import "src/_variables.scss";
+
+button {
+  padding: .5rem;
+  border-radius: $border-radius-x2;
+  cursor: pointer;
+  background-color: transparent;
+  color: $clipboard-color;
+  border: 1px solid $clipboard-color;
+  position: relative;
+
+  span {
+    position: absolute;
+    top: 8px;
+    left: -70px;
+  }
+}

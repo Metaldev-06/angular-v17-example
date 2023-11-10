@@ -1,0 +1,41 @@
+@import "src/_variables.scss";
+
+.education__container {
+
+  margin: 10rem auto;
+
+  .certification__container {
+
+    h2 {
+      padding-bottom: 2rem;
+    }
+
+    .certification__card {
+      width: 100%;
+      display: grid;
+      grid-auto-rows: 300px;
+      grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+      gap: 1rem;
+
+      @include media-up(screenXs) {
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      }
+
+      @include media-up(tabletXS) {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      }
+
+      @include media-up(mobileXL) {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      }
+
+      @include media-up(mobile) {
+        grid-template-columns: minmax(85%, 200px);
+        justify-content: center;
+        align-content: center;
+        grid-auto-rows: 250px;
+      }
+
+    }
+  }
+}

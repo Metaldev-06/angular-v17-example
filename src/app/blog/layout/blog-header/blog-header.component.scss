@@ -1,0 +1,122 @@
+@import "src/_variables.scss";
+
+.header__container {
+  width: 100%;
+  height: 60px;
+  background-color: $header-blog;
+
+  @include media-up(mobile) {
+    height: auto;
+    padding: 1rem 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  .header__content {
+    width: 95%;
+    max-width: 1400px;
+    height: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+
+    .logo__container {
+
+      img {
+        cursor: pointer;
+      }
+    }
+
+    .nav__container {
+
+      ul {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
+
+        li {
+          cursor: pointer;
+          opacity: 0.8;
+          transition: opacity 0.3s ease-in-out;
+
+          &:hover {
+            opacity: 1;
+          }
+
+        }
+      }
+    }
+
+    .search__container {
+      width: clamp(200px, 50%, 400px);
+
+      @include media-up(mobile) {
+        display: none;
+      }
+    }
+
+    .user__container {
+      padding: .5rem;
+      border-radius: $border-radius-x1;
+      cursor: pointer;
+      transition: all 0.3s ease-in-out;
+
+      &:hover {
+        background-color: $card-color;
+      }
+
+      &:active {
+        background-color: $color-white;
+        color: $color-black;
+      }
+    }
+  }
+
+  .secondary__search {
+    display: none;
+
+    @include media-up(mobile) {
+      display: block;
+    }
+  }
+}
+
+.active {
+  opacity: 1;
+  font-weight: bold;
+  color: white;
+}
+
+.user__menu {
+  width: 200px;
+  padding: 1rem;
+  border-radius: $border-radius-x2;
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+
+
+  .user__menu--item {
+    width: 100%;
+    padding: 1rem;
+    border-radius: $border-radius-x1;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+
+    &:hover {
+      background-color: rgba(167, 167, 167, 0.5);
+    }
+  }
+
+  .sign__out {
+    color: $color-red;
+  }
+}

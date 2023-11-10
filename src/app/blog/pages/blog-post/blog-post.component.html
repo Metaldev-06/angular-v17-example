@@ -1,0 +1,36 @@
+@if (post()) {
+<section class="post__container container">
+  <article class="header__post">
+    @if (post().image) {
+    <div class="image__container">
+      <img [src]="post().image.data.attributes.url" [alt]="post().title" />
+    </div>
+    }
+
+    <div class="text__container">
+      <h1>{{ post().title | titlecase }}</h1>
+
+      <span class="published">{{
+        post().publishedAt | date : "longDate" : "UTC-3" : "es-AR"
+      }}</span>
+
+      @for (technology of post().technology; track technology) {
+      <div class="badge">
+        <span>{{ technology | titlecase }}</span>
+      </div>
+      }
+
+      <p class="description">{{ post().description }}</p>
+    </div>
+  </article>
+
+  <article class="markdown__container">
+    <markdown
+      class="markdown__container--post"
+      [data]="post().postExample"
+      [clipboardButtonComponent]="clipboardButton"
+      clipboard
+    ></markdown>
+  </article>
+</section>
+}

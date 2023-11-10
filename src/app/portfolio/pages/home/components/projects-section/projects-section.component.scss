@@ -1,0 +1,90 @@
+@import "src/_variables.scss";
+
+.projects__container {
+
+
+  .titlte__container {
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+
+  .projects__card--container {
+    display: grid;
+    grid-auto-rows: 300px;
+    grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+    grid-auto-flow: dense;
+    gap: 1rem;
+
+    @include media-up(tabletXS) {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .card {
+      width: 100%;
+      border-radius: $border-radius-x1;
+      cursor: pointer;
+      transition: all 0.3s ease-in-out;
+      display: flex;
+      justify-content: flex-end;
+      flex-direction: column;
+      gap: 0.5rem;
+      position: relative;
+      overflow: hidden;
+
+      @include media-up(tabletXS) {
+        height: 300px;
+      }
+
+      img {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        z-index: -1;
+        object-fit: cover;
+        transition: transform 0.3s ease-in-out;
+
+      }
+
+      // &:nth-child(even) {//   grid-column: span 2;
+      // }
+
+      &:hover {
+        background: rgba(0, 0, 0, 0.6);
+
+        img {
+          transform: scale(1.1);
+        }
+
+        .card__text {
+          div {
+
+            p {
+              display: block;
+            }
+          }
+        }
+      }
+
+      .card__text {
+        width: 100%;
+        background: rgb(0, 0, 0);
+        background: -moz-linear-gradient(0deg, rgba(0, 0, 0, 1) 0%, rgba(254, 49, 70, 0) 100%);
+        background: -webkit-linear-gradient(0deg, rgba(0, 0, 0, 1) 0%, rgba(254, 49, 70, 0) 100%);
+        background: linear-gradient(0deg, rgba(0, 0, 0, 1) 0%, rgba(254, 49, 70, 0) 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#000000", endColorstr="#fe3146", GradientType=1);
+
+        div {
+          padding: 1rem;
+
+
+          p {
+            display: none;
+            text-shadow: 1px 1px 10px rgba(0, 0, 0, 1);
+          }
+        }
+      }
+
+    }
+  }
+}

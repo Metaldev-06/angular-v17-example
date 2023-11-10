@@ -1,0 +1,28 @@
+<section class="projects__container container">
+  <div class="titlte__container">
+    <app-title [title]="'proyectos'" [routerLink]="['/projects']" />
+  </div>
+
+  <article class="projects__card--container">
+    @for (project of projectsFilter(); track project) {
+    <div
+      class="card"
+      [style]="project.attributes.important ? 'grid-column: span 2' : ''"
+      (click)="openDialog(project.attributes)"
+    >
+      <img
+        [ngSrc]="project.attributes.image | imagePipe"
+        [alt]="project.attributes.name"
+        fill
+      />
+
+      <div class="card__text">
+        <div>
+          <h3>{{ project.attributes.name }}</h3>
+          <p>{{ project.attributes.description }}</p>
+        </div>
+      </div>
+    </div>
+    }
+  </article>
+</section>
