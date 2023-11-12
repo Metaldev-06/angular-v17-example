@@ -12,6 +12,11 @@
 
       <div class="dialog__deploy">
         <span
+          [title]="
+            data.project.deploy_status
+              ? 'El frontend está activo'
+              : 'El frontend está inactivo'
+          "
           >Estado del front:
           <i
             class="pi pi-circle-fill"
@@ -24,6 +29,11 @@
 
         @if (data.project.server_status !== null) {
         <span
+          [title]="
+            data.project.server_status
+              ? 'El backend está activo'
+              : 'El backend está inactivo'
+          "
           >Estado del backend:
           <i
             class="pi pi-circle-fill"

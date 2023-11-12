@@ -1,11 +1,5 @@
 <section class="searcher__container container">
-  @if (posts().length === 0 && courses().length === 0) {
-  <article>
-    <h1>
-      No se ha encontrado nada con: <span class="query">"{{ query() }}"</span>
-    </h1>
-  </article>
-  } @if (posts().length > 0 || courses().length > 0) {
+  @if (!isEmpty()) {
   <article class="searcher__card--container">
     <div class="post__container">
       <h2>Posts</h2>
@@ -81,6 +75,13 @@
         }
       </div>
     </div>
+  </article>
+
+  } @else if (showEmptyMessage()) {
+  <article>
+    <h1>
+      No se ha encontrado nada con: <span class="query">"{{ query() }}"</span>
+    </h1>
   </article>
   }
 </section>

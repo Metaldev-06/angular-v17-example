@@ -11,6 +11,7 @@ import { ActivatedRoute, RouterLink } from '@angular/router';
 import { Datum } from '@src/app/core/interfaces/course-data/course-data';
 import { PostDatum } from '@src/app/core/interfaces/post-data/post-data';
 import { BlogDataService } from '@src/app/core/services/blog-data/blog-data.service';
+import { forkJoin } from 'rxjs';
 
 @Component({
   selector: 'app-blog-searcher',
@@ -24,6 +25,8 @@ export class BlogSearcherComponent {
   public posts = signal<PostDatum[]>([]);
   public courses = signal<Datum[]>([]);
   public query = signal<string>('');
+  public isEmpty = signal<boolean>(true);
+  public showEmptyMessage = signal<boolean>(false);
 
   private readonly route = inject(ActivatedRoute);
   private readonly blogDataService = inject(BlogDataService);
@@ -39,25 +42,46 @@ export class BlogSearcherComponent {
     this.route.queryParams
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe((params) => {
-        this.query.set(params['query']);
-
-        this.searcher(this.query());
+        this.searcher(params['query']);
       });
   }
 
-  private searcher(query: string) {
-    this.blogDataService
-      .searchPost(query)
-      .pipe(takeUntilDestroyed(this.destroyRef))
-      .subscribe((res) => {
-        this.posts.set(res.data);
-      });
+  private searcher(query: string): void {
+    // Creamos dos observables para las dos peticiones
+    const searchPost$ = this.blogDataService.searchPost(query);
+    const searchCourse$ = this.blogDataService.searchCourse(query);
 
-    this.blogDataService
-      .searchCourse(query)
+    // Usamos forkJoin para combinar ambas observables
+    forkJoin([searchPost$, searchCourse$])
       .pipe(takeUntilDestroyed(this.destroyRef))
-      .subscribe((res) => {
-        this.courses.set(res.data);
+      .subscribe({
+        next: ([postRes, courseRes]) => {
+          // Manejar los resultados de ambas peticiones aquí
+          this.posts.set(postRes.data);
+          this.courses.set(courseRes.data);
+
+          // Verificar existencia y configurar los signals según sea necesario
+          if (this.posts().length > 0 || this.courses().length > 0) {
+            this.isEmpty.set(false);
+          } else {
+            this.isEmpty.set(true);
+            this.query.set(query);
+          }
+        },
+
+        error: (error) => {
+          // Manejar errores si es necesario
+          console.error('Error en la búsqueda:', error);
+        },
+
+        complete: () => {
+          // Manejar la conclusión de la función
+          if (this.posts().length > 0 || this.courses().length > 0) {
+            this.showEmptyMessage.set(false);
+          } else {
+            this.showEmptyMessage.set(true);
+          }
+        },
       });
   }
 }
