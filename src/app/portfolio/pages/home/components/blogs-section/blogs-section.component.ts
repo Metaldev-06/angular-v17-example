@@ -40,11 +40,19 @@ export class BlogsSectionComponent {
   }
 
   getPosts() {
+    const latestPosts = sessionStorage.getItem('latestPosts');
+
+    if (latestPosts) {
+      this.posts.set(JSON.parse(latestPosts));
+      return;
+    }
+
     this.blogDataService
       .getLatestPosts()
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe((res) => {
         this.posts.set(res.data);
+        sessionStorage.setItem('latestPosts', JSON.stringify(res.data));
       });
   }
 }
