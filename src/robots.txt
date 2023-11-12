@@ -1,0 +1,3 @@
+User-agent: *
+Disallow: /admin/   # Evita que los motores de búsqueda rastreen la carpeta /admin/
+Disallow: /private/ # Evita que los motores de búsqueda rastreen la carpeta /private/
