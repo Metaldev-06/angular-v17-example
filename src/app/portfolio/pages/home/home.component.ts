@@ -13,6 +13,10 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ProjectsSectionComponent } from './components/projects-section/projects-section.component';
 import { BlogsSectionComponent } from './components/blogs-section/blogs-section.component';
 import { LoaderComponent } from '@src/app/shared/loader/loader.component';
+import { SkeletonPostCardComponent } from '@src/app/shared/skeleton-post-card/skeleton-post-card.component';
+import { RouterLink } from '@angular/router';
+import { TitleComponent } from '@src/app/shared/title/title.component';
+import { SkeletonCardImageComponent } from '@src/app/shared/skeleton-card-image/skeleton-card-image.component';
 
 @Component({
   selector: 'app-home',
@@ -23,6 +27,10 @@ import { LoaderComponent } from '@src/app/shared/loader/loader.component';
     ProjectsSectionComponent,
     BlogsSectionComponent,
     LoaderComponent,
+    SkeletonPostCardComponent,
+    TitleComponent,
+    RouterLink,
+    SkeletonCardImageComponent,
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',

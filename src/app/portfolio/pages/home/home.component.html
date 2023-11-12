@@ -1,15 +1,23 @@
 <app-hero-section />
 
-@defer (on viewport) {
 <app-about-me-section [aboutMe]="userData()" />
-}@placeholder {
-<app-loader />
-} @defer (on viewport) {
+
+@defer (on viewport) {
 <app-projects-section [projects]="userData().projects.data" />
 }@placeholder {
-<app-loader />
+<div class="container">
+  <div class="center">
+    <app-title [title]="'proyectos'" [routerLink]="['/projects']" />
+  </div>
+  <app-skeleton-card-image />
+</div>
 } @defer (on viewport) {
 <app-blogs-section />
 }@placeholder {
-<app-loader />
+<div class="container">
+  <div class="center">
+    <app-title [title]="'blog'" [routerLink]="['/blog']" />
+  </div>
+  <app-skeleton-post-card [items]="[1, 2, 3, 4]" />
+</div>
 }

@@ -3,6 +3,7 @@ import {
   ChangeDetectionStrategy,
   Component,
   DestroyRef,
+  Output,
   inject,
   signal,
 } from '@angular/core';
