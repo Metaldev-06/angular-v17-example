@@ -67,10 +67,10 @@ export class BlogDataService {
   }
 
   getLatestPosts(): Observable<PostData> {
-    const params = this.getCommonParams()
+    const params = new HttpParams()
       .set('sort', 'publishedAt:desc')
-      .set('pagination[limit]', '4');
-
+      .set('pagination[limit]', '4')
+      .set('populate', '*');
     return this.http.get<PostData>(`${this.apiUrl}/posts`, { params });
   }
 
