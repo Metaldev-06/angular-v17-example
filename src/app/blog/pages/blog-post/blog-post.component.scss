@@ -97,7 +97,14 @@
   h5,
   h6 {
     padding: 2rem 0;
+  }
+
+  h1 {
     font-size: 30px;
+  }
+
+  h2 {
+    font-size: 25px;
   }
 
   p {
@@ -137,6 +144,27 @@
     li {
       list-style: disc;
       line-height: 20px;
+    }
+
+    ul {
+      li {
+        list-style: circle;
+      }
+    }
+  }
+
+  blockquote {
+    margin: 1rem 0;
+    padding: 1rem;
+    background-color: $card-color;
+    border-radius: $border-radius-x2;
+  }
+
+  a {
+    color: $color-complementary;
+
+    &:hover {
+      text-decoration: underline;
     }
   }
 }
