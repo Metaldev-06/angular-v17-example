@@ -36,13 +36,16 @@ export class BlogDataService {
   }
 
   private getCommonParams(): HttpParams {
-    return new HttpParams()
-      .set('fields[0]', 'title')
-      .set('fields[1]', 'slug')
-      .set('fields[2]', 'description')
-      .set('fields[3]', 'technology')
-      .set('fields[4]', 'publishedAt')
-      .set('populate[image][fields][5]', 'formats');
+    return (
+      new HttpParams()
+        .set('fields[0]', 'title')
+        .set('fields[1]', 'slug')
+        .set('fields[2]', 'description')
+        .set('fields[3]', 'technology')
+        .set('fields[4]', 'publishedAt')
+        // .set('populate[image][fields][5]', 'formats')
+        .set('populate', 'image')
+    );
   }
 
   getPosts(page = 1): Observable<PostData> {

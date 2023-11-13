@@ -1,7 +1,7 @@
 <div class="post__card" [routerLink]="['/blog/post', post.attributes.slug]">
   <div class="card__image">
     <img
-      [src]="post.attributes.image.data.attributes.formats.medium.url"
+      [src]="post.attributes.image.data.attributes.url"
       [alt]="post.attributes.title"
     />
   </div>
