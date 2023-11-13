@@ -1,9 +1,12 @@
-@if (post()) {
 <section class="post__container container">
   <article class="header__post">
     @if (post().image) {
     <div class="image__container">
-      <img [src]="post().image.data.attributes.url" [alt]="post().title" />
+      <img
+        [src]="post().image.data.attributes.url"
+        [alt]="post().title"
+        [transition]="post().slug"
+      />
     </div>
     }
 
@@ -33,4 +36,3 @@
     ></markdown>
   </article>
 </section>
-}

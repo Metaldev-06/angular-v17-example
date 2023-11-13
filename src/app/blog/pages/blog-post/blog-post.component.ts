@@ -15,6 +15,8 @@ import { BlogDataService } from '@src/app/core/services/blog-data/blog-data.serv
 import { ClipboardButtonComponent } from '@src/app/shared/clipboard-button/clipboard-button.component';
 import { DatumAttributes } from '@src/app/core/interfaces/post-data/post-data';
 import { LoaderComponent } from '@src/app/shared/loader/loader.component';
+import { ActivatedRoute } from '@angular/router';
+import { TransitionNameDirective } from '@src/app/shared/directives/view-transition/transition-name.directive';
 
 @Component({
   selector: 'app-blog-post',
@@ -25,6 +27,7 @@ import { LoaderComponent } from '@src/app/shared/loader/loader.component';
     MarkdownModule,
     ClipboardButtonComponent,
     LoaderComponent,
+    TransitionNameDirective,
   ],
   templateUrl: './blog-post.component.html',
   styleUrl: './blog-post.component.scss',
@@ -38,15 +41,20 @@ export class BlogPostComponent {
 
   private readonly blogDataService = inject(BlogDataService);
   private readonly destroyRef = inject(DestroyRef);
+  private readonly route = inject(ActivatedRoute);
 
   ngOnInit(): void {
-    this.blogDataService
-      .getPostBySlug(this.slug)
-      .pipe(takeUntilDestroyed(this.destroyRef))
-      .subscribe((res) => {
-        this.post.set(res.data[0].attributes);
-      });
-
     document.documentElement.scrollTop = 0;
+
+    if (history.state.data) {
+      this.post.set(history.state.data.attributes);
+    } else {
+      this.blogDataService
+        .getPostBySlug(this.slug)
+        .pipe(takeUntilDestroyed(this.destroyRef))
+        .subscribe((res) => {
+          this.post.set(res.data[0].attributes);
+        });
+    }
   }
 }

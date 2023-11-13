@@ -49,10 +49,11 @@ export class BlogDataService {
   }
 
   getPosts(page = 1): Observable<PostData> {
-    let params = this.getCommonParams()
+    let params = new HttpParams()
       .set('sort', 'publishedAt:desc')
       .set('pagination[pageSize]', '8')
-      .set('pagination[page]', page);
+      .set('pagination[page]', page)
+      .set('populate', '*');
 
     return this.http.get<PostData>(`${this.apiUrl}/posts`, { params });
   }
