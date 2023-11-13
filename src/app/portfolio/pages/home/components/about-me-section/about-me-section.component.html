@@ -1,3 +1,4 @@
+@if (aboutMe.image_profile) {
 <section class="aboutMe__container container">
   <article class="aboutMe__content--top">
     <h2>Acerca de mí</h2>
@@ -11,9 +12,8 @@
 
       <div class="aboutMe__img">
         <img
-          [ngSrc]="aboutMe.image_profile | imagePipe"
+          [src]="aboutMe.image_profile.data.attributes.url"
           alt="Fernando Diaz"
-          fill
         />
       </div>
 
@@ -52,3 +52,23 @@
     }
   </article>
 </section>
+
+}@else {
+<section class="skeleton__container container">
+  <article class="skeleton__top">
+    <p-skeleton width="100%" height="377px"></p-skeleton>
+  </article>
+
+  <article class="skeleton__bottom">
+    <div>
+      <p-skeleton width="100%" height="170px"></p-skeleton>
+    </div>
+    <div>
+      <p-skeleton width="100%" height="170px"></p-skeleton>
+    </div>
+    <div>
+      <p-skeleton width="100%" height="170px"></p-skeleton>
+    </div>
+  </article>
+</section>
+}

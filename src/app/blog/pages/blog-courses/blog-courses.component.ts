@@ -31,11 +31,18 @@ export class BlogCoursesComponent {
   }
 
   getCourses() {
+    if (sessionStorage.getItem('courses')) {
+      this.courses.set(JSON.parse(sessionStorage.getItem('courses')!));
+      return;
+    }
+
     this.blogDataService
       .getCoursesByYoutube()
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe((res) => {
         this.courses.set(res.data);
+
+        sessionStorage.setItem('courses', JSON.stringify(res.data));
       });
   }
 }

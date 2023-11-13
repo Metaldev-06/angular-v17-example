@@ -11,10 +11,12 @@ import { HomeDataService } from '@src/app/core/services/home-data/home-data.serv
 import { AtroposComponent } from '@src/app/shared/atropos/atropos.component';
 import { TitleComponent } from '@src/app/shared/title/title.component';
 
+import { SkeletonModule } from 'primeng/skeleton';
+
 @Component({
   selector: 'app-skills',
   standalone: true,
-  imports: [AtroposComponent, TitleComponent],
+  imports: [AtroposComponent, TitleComponent, SkeletonModule],
   templateUrl: './skills.component.html',
   styleUrl: './skills.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -25,6 +27,7 @@ export class SkillsComponent {
   public backend = signal<SkillsDatum[]>([]);
   public database = signal<SkillsDatum[]>([]);
   public library = signal<SkillsDatum[]>([]);
+  public items = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
 
   private readonly homeDataService = inject(HomeDataService);
   private readonly destroyRef = inject(DestroyRef);
@@ -40,9 +43,8 @@ export class SkillsComponent {
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe((resp) => {
         this.skills.set(resp.skills.data);
+        this.setData();
       });
-
-    this.setData();
   }
 
   setData() {

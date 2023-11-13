@@ -1,6 +1,8 @@
 <section class="skills__container container">
   <app-title [title]="'habilidades'" />
 
+  @if (skills().length > 0) {
+
   <article class="skills__card--container">
     <div class="skill__stack">
       <h2>Frontend</h2>
@@ -56,4 +58,11 @@
       </div>
     </div>
   </article>
+  }@else {
+  <article class="skeleton__container">
+    @for (item of items; track $index) {
+    <p-skeleton width="200px" height="200px"></p-skeleton>
+    }
+  </article>
+  }
 </section>

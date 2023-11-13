@@ -18,10 +18,14 @@ export interface DataAttributes {
   about_me: string;
   services: Service[];
   projects: Projects;
-  image_profile: ImageData;
+  image_profile: ImageDataHome;
   resume_cv: ResumeCv;
   skills: Skills;
   certifications: Certifications;
+}
+
+export interface ImageDataHome {
+  data: DAT;
 }
 
 export interface ImageData {
