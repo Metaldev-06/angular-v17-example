@@ -23,8 +23,6 @@ export class CardPostComponent {
   private readonly router = inject(Router);
 
   goToPost(product: PostDatum) {
-    console.log(product);
-
     this.router.navigate(['/blog/post', product.attributes.slug], {
       state: { data: product },
     });

@@ -7,16 +7,17 @@ import {
   signal,
 } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { ActivatedRoute, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { Datum } from '@src/app/core/interfaces/course-data/course-data';
 import { PostDatum } from '@src/app/core/interfaces/post-data/post-data';
 import { BlogDataService } from '@src/app/core/services/blog-data/blog-data.service';
+import { TransitionNameDirective } from '@src/app/shared/directives/view-transition/transition-name.directive';
 import { forkJoin } from 'rxjs';
 
 @Component({
   selector: 'app-blog-searcher',
   standalone: true,
-  imports: [TitleCasePipe, DatePipe, RouterLink],
+  imports: [TitleCasePipe, DatePipe, RouterLink, TransitionNameDirective],
   templateUrl: './blog-searcher.component.html',
   styleUrl: './blog-searcher.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -31,6 +32,7 @@ export class BlogSearcherComponent {
   private readonly route = inject(ActivatedRoute);
   private readonly blogDataService = inject(BlogDataService);
   private readonly destroyRef = inject(DestroyRef);
+  private readonly router = inject(Router);
 
   ngOnInit(): void {
     this.getQueryParams();
@@ -83,5 +85,11 @@ export class BlogSearcherComponent {
           }
         },
       });
+  }
+
+  goToPost(product: PostDatum) {
+    this.router.navigate(['/blog/post', product.attributes.slug], {
+      state: { data: product },
+    });
   }
 }

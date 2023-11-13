@@ -5,12 +5,13 @@
       <h2>Posts</h2>
       <div class="card__container">
         @for (post of posts(); track post){
-        <div class="card" [routerLink]="['/blog/post', post.attributes.slug]">
+        <div class="card" (click)="goToPost(post)">
           <div class="image__container">
             <img
               [src]="
                 post.attributes.image.data.attributes.formats.thumbnail.url
               "
+              [transition]="post.attributes.slug"
               [alt]="post.attributes.title"
             />
           </div>

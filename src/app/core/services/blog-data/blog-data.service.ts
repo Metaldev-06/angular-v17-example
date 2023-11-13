@@ -83,10 +83,11 @@ export class BlogDataService {
   }
 
   searchPost(query: string): Observable<PostData> {
-    const params = this.getCommonParams()
+    const params = new HttpParams()
       .set('filters[$or][0][title][$containsi]', query)
       .set('filters[$or][1][technology][$containsi]', query)
-      .set('pagination[limit]', '5');
+      .set('pagination[limit]', '5')
+      .set('populate', '*');
     return this.http.get<PostData>(`${this.apiUrl}/posts`, { params });
   }
 
