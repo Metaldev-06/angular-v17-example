@@ -1,4 +1,4 @@
-import { TitleCasePipe } from '@angular/common';
+import { UpperCasePipe } from '@angular/common';
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { SearcherComponent } from '@src/app/shared/searcher/searcher.component';
@@ -9,7 +9,7 @@ import { OverlayPanelModule } from 'primeng/overlaypanel';
   selector: 'app-blog-header',
   standalone: true,
   imports: [
-    TitleCasePipe,
+    UpperCasePipe,
     RouterLink,
     RouterLinkActive,
     SearcherComponent,

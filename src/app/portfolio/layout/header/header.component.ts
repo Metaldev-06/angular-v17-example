@@ -6,6 +6,7 @@ import {
   signal,
 } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
+import { TransitionNameDirective } from '@src/app/shared/directives/view-transition/transition-name.directive';
 
 import { SidebarModule } from 'primeng/sidebar';
 
@@ -23,6 +24,7 @@ interface NavItem {
     UpperCasePipe,
     RouterLinkActive,
     SidebarModule,
+    TransitionNameDirective,
   ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',

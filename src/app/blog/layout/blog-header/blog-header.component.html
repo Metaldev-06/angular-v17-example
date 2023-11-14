@@ -17,7 +17,7 @@
           routerLinkActive="active"
           [routerLinkActiveOptions]="{ exact: true }"
         >
-          {{ item.name | titlecase }}
+          {{ item.name | uppercase }}
         </li>
         }
       </ul>
@@ -49,7 +49,7 @@
     <div class="user__menu--item" [routerLink]="[item.route]">
       <i [class]="item.icon"></i>
       <span>
-        {{ item.name | titlecase }}
+        {{ item.name | uppercase }}
       </span>
     </div>
     }
