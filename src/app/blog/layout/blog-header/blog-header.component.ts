@@ -1,6 +1,7 @@
-import { UpperCasePipe } from '@angular/common';
+import { NgOptimizedImage, UpperCasePipe } from '@angular/common';
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
+import { TransitionNameDirective } from '@src/app/shared/directives/view-transition/transition-name.directive';
 import { SearcherComponent } from '@src/app/shared/searcher/searcher.component';
 
 import { OverlayPanelModule } from 'primeng/overlaypanel';
@@ -14,6 +15,8 @@ import { OverlayPanelModule } from 'primeng/overlaypanel';
     RouterLinkActive,
     SearcherComponent,
     OverlayPanelModule,
+    TransitionNameDirective,
+    NgOptimizedImage,
   ],
   templateUrl: './blog-header.component.html',
   styleUrl: './blog-header.component.scss',

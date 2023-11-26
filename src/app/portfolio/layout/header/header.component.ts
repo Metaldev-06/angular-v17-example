@@ -1,4 +1,4 @@
-import { NgClass, UpperCasePipe } from '@angular/common';
+import { NgClass, NgOptimizedImage, UpperCasePipe } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -25,6 +25,7 @@ interface NavItem {
     RouterLinkActive,
     SidebarModule,
     TransitionNameDirective,
+    NgOptimizedImage,
   ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',

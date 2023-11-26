@@ -8,6 +8,18 @@
   display: flex;
   flex-direction: column;
   gap: 2rem;
+  position: relative;
+
+  .progress__bar {
+    height: .5rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: $color-complementary;
+    z-index: 10;
+    animation: progress-grow auto linear;
+    animation-timeline: scroll(root block);
+  }
 
   .header__post {
     width: 100%;
@@ -189,5 +201,15 @@
 
     animation-range: entry 25% cover 30%;
     animation-fill-mode: both;
+  }
+}
+
+@keyframes progress-grow {
+  from {
+    width: 0;
+  }
+
+  to {
+    width: 100%;
   }
 }
