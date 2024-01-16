@@ -1,5 +1,11 @@
 <section class="education__container container">
-  <!-- <article></article> -->
+  <article class="education__content">
+    <app-title [title]="'educación'" />
+
+    <div class="timeline__content">
+      <app-timeline [timelineData]="educations()" />
+    </div>
+  </article>
   <article class="certification__container">
     <h2>Certificaciones</h2>
 

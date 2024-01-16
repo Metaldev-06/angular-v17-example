@@ -1,0 +1,8 @@
+<p-timeline [value]="timelineData">
+  <ng-template pTemplate="content" let-education>
+    <small class="p-text-secondary">{{ education.attributes.date }}</small>
+  </ng-template>
+  <ng-template pTemplate="opposite" let-education>
+    {{ education.attributes.title }}
+  </ng-template>
+</p-timeline>

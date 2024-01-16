@@ -18,6 +18,8 @@ import { LoaderComponent } from '@src/app/shared/loader/loader.component';
 import { ActivatedRoute } from '@angular/router';
 import { TransitionNameDirective } from '@src/app/shared/directives/view-transition/transition-name.directive';
 
+import { ScrollTopModule } from 'primeng/scrolltop';
+
 @Component({
   selector: 'app-blog-post',
   standalone: true,
@@ -28,6 +30,7 @@ import { TransitionNameDirective } from '@src/app/shared/directives/view-transit
     ClipboardButtonComponent,
     LoaderComponent,
     TransitionNameDirective,
+    ScrollTopModule,
   ],
   templateUrl: './blog-post.component.html',
   styleUrl: './blog-post.component.scss',

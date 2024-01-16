@@ -38,7 +38,9 @@ export class HomeDataService {
       .set('populate[4]', 'skills')
       .set('populate[5]', 'skills.image')
       .set('populate[6]', 'certifications')
-      .set('populate[7]', 'certifications.image');
+      .set('populate[7]', 'certifications.image')
+      .set('populate[8]', 'educations')
+      .set('populate[9]', 'educations.image');
 
     return this.http.get<HomeDataResponse>(`${this.apiUrl}/home`, { params });
   }
