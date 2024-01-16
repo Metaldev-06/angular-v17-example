@@ -1,8 +1,16 @@
 @import "src/_variables.scss";
 
 .education__container {
-
   margin: 10rem auto;
+
+  .education__content {
+    margin-block: 1rem;
+    text-align: center;
+
+    .timeline__content {
+      margin-block: 2rem;
+    }
+  }
 
   .certification__container {
 

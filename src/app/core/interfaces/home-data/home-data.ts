@@ -22,6 +22,7 @@ export interface DataAttributes {
   resume_cv: ResumeCv;
   skills: Skills;
   certifications: Certifications;
+  educations: Educations;
 }
 
 export interface ImageDataHome {
@@ -181,6 +182,22 @@ export interface CertificationsAttributes {
   publishedAt: Date;
   locale: string;
   image: ImageData;
+}
+
+export interface Educations {
+  data: EducationsDatum[];
+}
+
+export interface EducationsDatum {
+  id: number;
+  attributes: EducationsAttributes;
+}
+
+export interface EducationsAttributes {
+  title: string;
+  image: ImageData;
+  description: string;
+  date: string;
 }
 
 export interface Meta {}
