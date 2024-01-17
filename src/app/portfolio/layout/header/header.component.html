@@ -30,7 +30,7 @@
         }
       </ul>
 
-      <button (click)="sidebarVisible2 = true" aria-label="menu">
+      <button (click)="showSidebar = true" aria-label="menu">
         <i class="pi pi-bars"></i>
       </button>
     </nav>
@@ -38,7 +38,7 @@
 </header>
 
 <p-sidebar
-  [(visible)]="sidebarVisible2"
+  [(visible)]="showSidebar"
   position="right"
   [style]="{ zIndex: 'none' }"
 >
@@ -52,6 +52,7 @@
         [routerLink]="[item.route]"
         routerLinkActive="active--secondary"
         [routerLinkActiveOptions]="{ exact: true }"
+        (click)="showSidebar = false"
       >
         {{ item.name | uppercase }}
       </li>
