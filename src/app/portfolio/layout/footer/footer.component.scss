@@ -50,6 +50,7 @@
     }
 
     span {
+      text-align: center;
       opacity: 0.6;
 
       @include media-up(mobile) {
