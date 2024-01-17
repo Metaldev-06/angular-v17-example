@@ -13,7 +13,7 @@ import { ProjectDataResponse } from '../../interfaces/project-data/project-data'
 })
 export class HomeDataService {
   private homeData: BehaviorSubject<DataAttributes> = new BehaviorSubject(
-    {} as DataAttributes
+    {} as DataAttributes,
   );
   public homeData$ = this.homeData.asObservable();
 

@@ -1,7 +1,14 @@
+@import "src/_variables.scss";
+
+
 .skeleton__container {
   display: grid;
   gap: 2rem;
   grid-template-columns: repeat(auto-fill, minmax(325px, 1fr));
+
+  @include media-up(minCard) {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  }
 
   div {
     display: flex;

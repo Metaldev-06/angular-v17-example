@@ -12,7 +12,7 @@ export class BlogDataService {
   private readonly apiUrl = environment.apiUrl;
 
   private blogData: BehaviorSubject<PostData> = new BehaviorSubject(
-    {} as PostData
+    {} as PostData,
   );
   public blogData$ = this.blogData.asObservable();
 

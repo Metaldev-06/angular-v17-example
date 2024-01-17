@@ -1,88 +1,93 @@
 <section class="searcher__container container">
   @if (!isEmpty()) {
-  <article class="searcher__card--container">
-    <div class="post__container">
-      <h2>Posts</h2>
-      <div class="card__container">
-        @for (post of posts(); track post){
-        <div class="card" (click)="goToPost(post)">
-          <div class="image__container">
-            <img
-              [src]="
-                post.attributes.image.data.attributes.formats.thumbnail.url
-              "
-              [transition]="post.attributes.slug"
-              [alt]="post.attributes.title"
-            />
-          </div>
+    <article class="searcher__card--container">
+      <div class="post__container">
+        <h2>Posts</h2>
+        <div class="card__container">
+          @for (post of posts(); track post) {
+            <div class="card" (click)="goToPost(post)">
+              <div class="image__container">
+                <img
+                  [src]="
+                    post.attributes.image.data.attributes.formats.thumbnail.url
+                  "
+                  [transition]="post.attributes.slug"
+                  [alt]="post.attributes.title"
+                />
+              </div>
 
-          <div class="text__card">
-            <h3>{{ post.attributes.title | titlecase }}</h3>
+              <div class="text__card">
+                <h3>{{ post.attributes.title | titlecase }}</h3>
 
-            <div class="badge__container">
-              @for (technology of post.attributes.technology; track technology){
-              <span class="badge">
-                {{ technology | titlecase }}
-              </span>
-              }
+                <div class="badge__container">
+                  @for (
+                    technology of post.attributes.technology;
+                    track technology
+                  ) {
+                    <span class="badge">
+                      {{ technology | titlecase }}
+                    </span>
+                  }
+                </div>
+
+                <span class="published">
+                  {{
+                    post.attributes.publishedAt
+                      | date: "mediumDate" : "UTC-3" : "es-AR"
+                  }}
+                </span>
+              </div>
             </div>
-
-            <span class="published">
-              {{
-                post.attributes.publishedAt
-                  | date : "mediumDate" : "UTC-3" : "es-AR"
-              }}
-            </span>
-          </div>
+          }
         </div>
-        }
       </div>
-    </div>
 
-    <div class="courses__container">
-      <h2>Cursos</h2>
-      <div class="card__container">
-        @for (course of courses(); track course){
-        <a class="card" [href]="course.attributes.url" target="_blank">
-          <div class="image__container">
-            <img
-              [src]="
-                course.attributes.image.data.attributes.formats.thumbnail.url
-              "
-              [alt]="course.attributes.title"
-            />
-          </div>
+      <div class="courses__container">
+        <h2>Cursos</h2>
+        <div class="card__container">
+          @for (course of courses(); track course) {
+            <a class="card" [href]="course.attributes.url" target="_blank">
+              <div class="image__container">
+                <img
+                  [src]="
+                    course.attributes.image.data.attributes.formats.thumbnail
+                      .url
+                  "
+                  [alt]="course.attributes.title"
+                />
+              </div>
 
-          <div class="text__card">
-            <h3>{{ course.attributes.title | titlecase }}</h3>
+              <div class="text__card">
+                <h3>{{ course.attributes.title | titlecase }}</h3>
 
-            <div class="badge__container">
-              @for (technology of course.attributes.technology; track
-              technology){
-              <span class="badge">
-                {{ technology | titlecase }}
-              </span>
-              }
-            </div>
+                <div class="badge__container">
+                  @for (
+                    technology of course.attributes.technology;
+                    track technology
+                  ) {
+                    <span class="badge">
+                      {{ technology | titlecase }}
+                    </span>
+                  }
+                </div>
 
-            <span class="published">
-              {{
-                course.attributes.publishedAt
-                  | date : "mediumDate" : "UTC-3" : "es-AR"
-              }}
-            </span>
-          </div>
-        </a>
-        }
+                <span class="published">
+                  {{
+                    course.attributes.publishedAt
+                      | date: "mediumDate" : "UTC-3" : "es-AR"
+                  }}
+                </span>
+              </div>
+            </a>
+          }
+        </div>
       </div>
-    </div>
-  </article>
-
+    </article>
   } @else if (showEmptyMessage()) {
-  <article>
-    <h1>
-      No se ha encontrado nada con: <span class="query">"{{ query() }}"</span>
-    </h1>
-  </article>
+    <article>
+      <h1>
+        No se ha encontrado nada con: <span class="query">"{{ query() }}"</span>
+      </h1>
+    </article>
   }
 </section>
