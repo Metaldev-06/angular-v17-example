@@ -1,4 +1,16 @@
 <section class="hero__container">
+  <article class="image__container">
+    <div class="logo__container">
+      <img src="/assets/logo_hero.svg" alt="Logo Metaldev" />
+    </div>
+
+    <div class="skills__container">
+      @for (image of skills(); track $index) {
+      <img [src]="image" alt="Skills" width="50" />
+      }
+    </div>
+  </article>
+
   <article class="hero__content">
     <div class="redes">
       @for (social of socials(); track social) {
