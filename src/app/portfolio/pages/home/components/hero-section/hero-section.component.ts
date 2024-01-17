@@ -33,4 +33,16 @@ export class HeroSectionComponent {
       url: 'https://www.linkedin.com/in/fernandodiaz62/',
     },
   ]);
+
+  public skills = signal<string[]>([
+    '../../../../../../assets/skills/1.svg',
+    '../../../../../../assets/skills/2.svg',
+    '../../../../../../assets/skills/3.svg',
+    '../../../../../../assets/skills/4.svg',
+    '../../../../../../assets/skills/5.svg',
+    '../../../../../../assets/skills/6.svg',
+    '../../../../../../assets/skills/7.svg',
+    '../../../../../../assets/skills/8.svg',
+    '../../../../../../assets/skills/9.svg',
+  ]);
 }

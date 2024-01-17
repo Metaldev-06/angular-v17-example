@@ -136,6 +136,10 @@
         @include media-up(mobile) {
           margin: 0 auto;
         }
+
+        @include media-up(minCard) {
+          width: 30px;
+        }
       }
 
       h3 {

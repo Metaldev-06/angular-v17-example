@@ -34,7 +34,7 @@ interface NavItem {
 export class HeaderComponent {
   public headerFixed!: Boolean;
 
-  public sidebarVisible2: boolean = false;
+  public showSidebar: boolean = false;
 
   public navItems = signal<NavItem[]>([
     {
