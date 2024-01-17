@@ -4,12 +4,12 @@
   </div>
 
   @if (posts().length > 0) {
-  <article class="blogs__card--container">
-    @for (post of posts(); track post) {
-    <app-card-post [post]="post" />
-    }
-  </article>
-  }@else {
-  <app-skeleton-post-card [items]="[1, 2, 3, 4]" />
+    <article class="blogs__card--container">
+      @for (post of posts(); track post) {
+        <app-card-post [post]="post" />
+      }
+    </article>
+  } @else {
+    <app-skeleton-post-card [items]="[1, 2, 3, 4]" />
   }
 </section>

@@ -3,21 +3,22 @@
 <app-about-me-section [aboutMe]="userData()" />
 
 @defer (on viewport) {
-<app-projects-section [projects]="userData().projects.data" />
-}@placeholder {
-<div class="container">
-  <div class="center">
-    <app-title [title]="'proyectos'" [routerLink]="['/projects']" />
+  <app-projects-section [projects]="userData().projects.data" />
+} @placeholder {
+  <div class="container">
+    <div class="center">
+      <app-title [title]="'proyectos'" [routerLink]="['/projects']" />
+    </div>
+    <app-skeleton-card-image />
   </div>
-  <app-skeleton-card-image />
-</div>
-} @defer (on viewport) {
-<app-blogs-section />
-}@placeholder {
-<div class="container">
-  <div class="center">
-    <app-title [title]="'blog'" [routerLink]="['/blog']" />
+}
+@defer (on viewport) {
+  <app-blogs-section />
+} @placeholder {
+  <div class="container">
+    <div class="center">
+      <app-title [title]="'blog'" [routerLink]="['/blog']" />
+    </div>
+    <app-skeleton-post-card [items]="[1, 2, 3, 4]" />
   </div>
-  <app-skeleton-post-card [items]="[1, 2, 3, 4]" />
-</div>
 }

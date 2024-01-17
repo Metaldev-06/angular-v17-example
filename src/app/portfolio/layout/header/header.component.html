@@ -18,15 +18,15 @@
     <nav class="header__navbar">
       <ul class="navbar__list">
         @for (item of navItems(); track item) {
-        <li
-          class="navbar__list--item"
-          [routerLink]="[item.route]"
-          routerLinkActive="active"
-          [routerLinkActiveOptions]="{ exact: true }"
-          [transition]="item.name"
-        >
-          {{ item.name | uppercase }}
-        </li>
+          <li
+            class="navbar__list--item"
+            [routerLink]="[item.route]"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }"
+            [transition]="item.name"
+          >
+            {{ item.name | uppercase }}
+          </li>
         }
       </ul>
 
@@ -47,15 +47,15 @@
 
     <ul class="navbar__list--secondary">
       @for (item of navItems(); track item) {
-      <li
-        class="navbar__list--item"
-        [routerLink]="[item.route]"
-        routerLinkActive="active--secondary"
-        [routerLinkActiveOptions]="{ exact: true }"
-        (click)="showSidebar = false"
-      >
-        {{ item.name | uppercase }}
-      </li>
+        <li
+          class="navbar__list--item"
+          [routerLink]="[item.route]"
+          routerLinkActive="active--secondary"
+          [routerLinkActiveOptions]="{ exact: true }"
+          (click)="showSidebar = false"
+        >
+          {{ item.name | uppercase }}
+        </li>
       }
     </ul>
   </div>

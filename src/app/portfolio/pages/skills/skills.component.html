@@ -2,67 +2,66 @@
   <app-title [title]="'habilidades'" />
 
   @if (skills().length > 0) {
-
-  <article class="skills__card--container">
-    <div class="skill__stack">
-      <h2>Frontend</h2>
-      <div class="skills__content">
-        @for (skill of frontend();track skill ; let index = $index) {
-        <app-atropos
-          [item]="skill.attributes"
-          [clase]="skill.attributes.name"
-          [isPrimary]="true"
-        ></app-atropos>
-        }
+    <article class="skills__card--container">
+      <div class="skill__stack">
+        <h2>Frontend</h2>
+        <div class="skills__content">
+          @for (skill of frontend(); track skill; let index = $index) {
+            <app-atropos
+              [item]="skill.attributes"
+              [clase]="skill.attributes.name"
+              [isPrimary]="true"
+            ></app-atropos>
+          }
+        </div>
       </div>
-    </div>
 
-    <div class="skill__stack">
-      <h2>Backend</h2>
-      <div class="skills__content">
-        @for (skill of backend();track skill ; let index = $index) {
-        <app-atropos
-          [item]="skill.attributes"
-          [clase]="skill.attributes.name"
-          [isPrimary]="true"
-        ></app-atropos>
-        }
+      <div class="skill__stack">
+        <h2>Backend</h2>
+        <div class="skills__content">
+          @for (skill of backend(); track skill; let index = $index) {
+            <app-atropos
+              [item]="skill.attributes"
+              [clase]="skill.attributes.name"
+              [isPrimary]="true"
+            ></app-atropos>
+          }
+        </div>
       </div>
-    </div>
 
-    <div class="skill__stack">
-      <h2>Base de Datos</h2>
+      <div class="skill__stack">
+        <h2>Base de Datos</h2>
 
-      <div class="skills__content">
-        @for (skill of database();track skill ; let index = $index) {
-        <app-atropos
-          [item]="skill.attributes"
-          [clase]="skill.attributes.name"
-          [isPrimary]="true"
-        ></app-atropos>
-        }
+        <div class="skills__content">
+          @for (skill of database(); track skill; let index = $index) {
+            <app-atropos
+              [item]="skill.attributes"
+              [clase]="skill.attributes.name"
+              [isPrimary]="true"
+            ></app-atropos>
+          }
+        </div>
       </div>
-    </div>
 
-    <div class="skill__stack">
-      <h2>Librerías</h2>
+      <div class="skill__stack">
+        <h2>Librerías</h2>
 
-      <div class="skills__content">
-        @for (skill of library();track skill ; let index = $index) {
-        <app-atropos
-          [item]="skill.attributes"
-          [clase]="skill.attributes.name"
-          [isPrimary]="true"
-        ></app-atropos>
-        }
+        <div class="skills__content">
+          @for (skill of library(); track skill; let index = $index) {
+            <app-atropos
+              [item]="skill.attributes"
+              [clase]="skill.attributes.name"
+              [isPrimary]="true"
+            ></app-atropos>
+          }
+        </div>
       </div>
-    </div>
-  </article>
-  }@else {
-  <article class="skeleton__container">
-    @for (item of items; track $index) {
-    <p-skeleton width="200px" height="200px"></p-skeleton>
-    }
-  </article>
+    </article>
+  } @else {
+    <article class="skeleton__container">
+      @for (item of items; track $index) {
+        <p-skeleton width="200px" height="200px"></p-skeleton>
+      }
+    </article>
   }
 </section>

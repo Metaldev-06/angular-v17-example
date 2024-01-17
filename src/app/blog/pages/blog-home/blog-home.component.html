@@ -20,27 +20,25 @@
   <article class="post__container container">
     <h2>Últimos Posts</h2>
     @if (posts()) {
-    <div class="card__container">
-      @for (post of posts(); track post) {
-      <app-card-post [post]="post" />
-      }
-    </div>
-
-    }@else {
-    <app-skeleton-post-card />
+      <div class="card__container">
+        @for (post of posts(); track post) {
+          <app-card-post [post]="post" />
+        }
+      </div>
+    } @else {
+      <app-skeleton-post-card />
     }
   </article>
 
   @if (showButtonPage()) {
-
-  <div class="button__container">
-    <button
-      class="button custom__button--line"
-      (click)="nextPage()"
-      [ngStyle]="{ opacity: showButtonPage() ? 1 : 0.4 }"
-    >
-      Ver más
-    </button>
-  </div>
+    <div class="button__container">
+      <button
+        class="button custom__button--line"
+        (click)="nextPage()"
+        [ngStyle]="{ opacity: showButtonPage() ? 1 : 0.4 }"
+      >
+        Ver más
+      </button>
+    </div>
   }
 </section>

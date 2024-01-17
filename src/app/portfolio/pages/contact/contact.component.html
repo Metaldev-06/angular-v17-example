@@ -62,12 +62,12 @@
 
         <button type="submit" class="button">
           @if (!isLoading()) {
-          <span>ENVIAR MENSAJE</span>
-          }@else {
-          <span>
-            ENVIANDO MENSAJE
-            <i class="pi pi-spin pi-spinner"></i>
-          </span>
+            <span>ENVIAR MENSAJE</span>
+          } @else {
+            <span>
+              ENVIANDO MENSAJE
+              <i class="pi pi-spin pi-spinner"></i>
+            </span>
           }
         </button>
       </form>
@@ -76,5 +76,5 @@
 </section>
 
 @if (message().length > 0) {
-<span class="message">{{ message() }}</span>
+  <span class="message">{{ message() }}</span>
 }

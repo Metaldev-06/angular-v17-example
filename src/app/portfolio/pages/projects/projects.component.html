@@ -4,26 +4,24 @@
   </div>
 
   @if (projects().length > 0) {
-  <article class="projects__card--container">
-    @for (project of projects(); track project) {
+    <article class="projects__card--container">
+      @for (project of projects(); track project) {
+        <div class="card" (click)="openDialog(project.attributes)">
+          <div class="card__image">
+            <img
+              [ngSrc]="project.attributes.image | imagePipe"
+              [alt]="project.attributes.name"
+              fill
+            />
+          </div>
 
-    <div class="card" (click)="openDialog(project.attributes)">
-      <div class="card__image">
-        <img
-          [ngSrc]="project.attributes.image | imagePipe"
-          [alt]="project.attributes.name"
-          fill
-        />
-      </div>
-
-      <div class="card__text">
-        <h3>{{ project.attributes.name | titlecase }}</h3>
-      </div>
-    </div>
-
-    }
-  </article>
-  }@else {
-  <app-skeleton-card-image [items]="[1, 2, 3, 4, 5, 6, 7, 8, 9]" />
+          <div class="card__text">
+            <h3>{{ project.attributes.name | titlecase }}</h3>
+          </div>
+        </div>
+      }
+    </article>
+  } @else {
+    <app-skeleton-card-image [items]="[1, 2, 3, 4, 5, 6, 7, 8, 9]" />
   }
 </section>

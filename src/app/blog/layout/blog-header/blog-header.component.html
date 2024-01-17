@@ -14,13 +14,13 @@
     <nav class="nav__container">
       <ul>
         @for (item of navItem; track item) {
-        <li
-          [routerLink]="[item.route]"
-          routerLinkActive="active"
-          [routerLinkActiveOptions]="{ exact: true }"
-        >
-          {{ item.name | uppercase }}
-        </li>
+          <li
+            [routerLink]="[item.route]"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }"
+          >
+            {{ item.name | uppercase }}
+          </li>
         }
       </ul>
     </nav>
@@ -48,12 +48,12 @@
 <p-overlayPanel #op>
   <div class="user__menu">
     @for (item of userMenu; track item) {
-    <div class="user__menu--item" [routerLink]="[item.route]">
-      <i [class]="item.icon"></i>
-      <span>
-        {{ item.name | uppercase }}
-      </span>
-    </div>
+      <div class="user__menu--item" [routerLink]="[item.route]">
+        <i [class]="item.icon"></i>
+        <span>
+          {{ item.name | uppercase }}
+        </span>
+      </div>
     }
 
     <div class="user__menu--item sign__out">
