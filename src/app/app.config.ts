@@ -11,7 +11,11 @@ import { provideAnimations } from '@angular/platform-browser/animations';
 import localeEsAr from '@angular/common/locales/es-AR';
 import { registerLocaleData } from '@angular/common';
 
-import { ClipboardOptions, MarkdownModule } from 'ngx-markdown';
+import {
+  CLIPBOARD_OPTIONS,
+  ClipboardOptions,
+  MarkdownModule,
+} from 'ngx-markdown';
 
 import { routes } from './app.routes';
 import { ClipboardButtonComponent } from './shared/clipboard-button/clipboard-button.component';
@@ -25,7 +29,7 @@ export const appConfig: ApplicationConfig = {
     importProvidersFrom([
       MarkdownModule.forRoot({
         clipboardOptions: {
-          provide: ClipboardOptions,
+          provide: CLIPBOARD_OPTIONS,
           useValue: {
             buttonComponent: ClipboardButtonComponent,
           },
