@@ -16,6 +16,8 @@ import { SkeletonCardImageComponent } from '@src/app/shared/skeleton-card-image/
 
 import { TitleComponent } from '@src/app/shared/title/title.component';
 import { TimelineComponent } from './components/timeline/timeline.component';
+import { TranslocoPipe } from '@ngneat/transloco';
+import { TitleCasePipe } from '@angular/common';
 
 @Component({
   selector: 'app-education',
@@ -25,6 +27,8 @@ import { TimelineComponent } from './components/timeline/timeline.component';
     SkeletonCardImageComponent,
     TitleComponent,
     TimelineComponent,
+    TranslocoPipe,
+    TitleCasePipe,
   ],
   templateUrl: './education.component.html',
   styleUrl: './education.component.scss',

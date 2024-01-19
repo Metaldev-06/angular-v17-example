@@ -1,4 +1,4 @@
-import { NgStyle } from '@angular/common';
+import { NgStyle, TitleCasePipe } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -7,6 +7,7 @@ import {
   signal,
 } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { TranslocoPipe } from '@ngneat/transloco';
 import {
   Pagination,
   PostDatum,
@@ -24,6 +25,8 @@ import { SkeletonModule } from 'primeng/skeleton';
     SkeletonModule,
     NgStyle,
     SkeletonPostCardComponent,
+    TranslocoPipe,
+    TitleCasePipe,
   ],
   templateUrl: './blog-home.component.html',
   styleUrl: './blog-home.component.scss',

@@ -1,6 +1,7 @@
 import { NgOptimizedImage, UpperCasePipe } from '@angular/common';
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
+import { TranslocoPipe, TranslocoService } from '@ngneat/transloco';
 import { TransitionNameDirective } from '@src/app/shared/directives/view-transition/transition-name.directive';
 import { SearcherComponent } from '@src/app/shared/searcher/searcher.component';
 
@@ -17,6 +18,7 @@ import { OverlayPanelModule } from 'primeng/overlaypanel';
     OverlayPanelModule,
     TransitionNameDirective,
     NgOptimizedImage,
+    TranslocoPipe,
   ],
   templateUrl: './blog-header.component.html',
   styleUrl: './blog-header.component.scss',
@@ -25,11 +27,11 @@ import { OverlayPanelModule } from 'primeng/overlaypanel';
 export class BlogHeaderComponent {
   public navItem = [
     {
-      name: 'inicio',
+      name: 'layout-blog.home',
       route: '/blog',
     },
     {
-      name: 'cursos',
+      name: 'layout-blog.courses',
       route: 'courses',
     },
     // {
@@ -37,7 +39,7 @@ export class BlogHeaderComponent {
     //   route: 'routes',
     // },
     {
-      name: 'portfolio',
+      name: 'layout-blog.portfolio',
       route: '',
     },
   ];
@@ -51,6 +53,7 @@ export class BlogHeaderComponent {
   ];
 
   private readonly router = inject(Router);
+  private readonly translocoService = inject(TranslocoService);
 
   ngOnInit(): void {}
 
@@ -61,4 +64,8 @@ export class BlogHeaderComponent {
       },
     });
   }
+
+  // changeLanguage() {
+  //   this.translocoService.setActiveLang('en');
+  // }
 }

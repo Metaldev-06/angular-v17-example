@@ -1,10 +1,11 @@
 import { NgClass, NgIf, NgStyle } from '@angular/common';
 import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+import { TranslocoPipe } from '@ngneat/transloco';
 
 @Component({
   selector: 'app-clipboard-button',
   standalone: true,
-  imports: [NgClass, NgStyle, NgIf],
+  imports: [NgClass, NgStyle, NgIf, TranslocoPipe],
   templateUrl: './clipboard-button.component.html',
   styleUrls: ['./clipboard-button.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

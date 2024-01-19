@@ -25,9 +25,15 @@
             [routerLinkActiveOptions]="{ exact: true }"
             [transition]="item.name"
           >
-            {{ item.name | uppercase }}
+            {{ item.name | transloco | uppercase }}
           </li>
         }
+
+        <select [(ngModel)]="selectedLanguage" (change)="changeLanguage()">
+          <option value="es">Español</option>
+          <option value="en">English</option>
+          <!-- Agrega más opciones según tus necesidades -->
+        </select>
       </ul>
 
       <button (click)="showSidebar = true" aria-label="menu">
@@ -54,7 +60,7 @@
           [routerLinkActiveOptions]="{ exact: true }"
           (click)="showSidebar = false"
         >
-          {{ item.name | uppercase }}
+          {{ item.name | transloco | uppercase }}
         </li>
       }
     </ul>

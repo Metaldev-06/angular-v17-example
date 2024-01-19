@@ -19,9 +19,10 @@
             routerLinkActive="active"
             [routerLinkActiveOptions]="{ exact: true }"
           >
-            {{ item.name | uppercase }}
+            {{ item.name | transloco | uppercase }}
           </li>
         }
+        <!-- <button (click)="changeLanguage()">lang</button> -->
       </ul>
     </nav>
 

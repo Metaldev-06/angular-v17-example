@@ -1,6 +1,9 @@
 <section class="blogs__container container">
   <div class="titlte__container">
-    <app-title [title]="'blog'" [routerLink]="['/blog']" />
+    <app-title
+      [title]="'layout-portfolio.blog' | transloco"
+      [routerLink]="['/blog']"
+    />
   </div>
 
   @if (posts().length > 0) {

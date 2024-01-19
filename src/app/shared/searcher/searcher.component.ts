@@ -12,11 +12,12 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
+import { TranslocoPipe } from '@ngneat/transloco';
 
 @Component({
   selector: 'app-searcher',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, TranslocoPipe],
   templateUrl: './searcher.component.html',
   styleUrls: ['./searcher.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -42,7 +43,7 @@ export class SearcherComponent {
     if (this.inputSearchForm.invalid) return;
 
     this.query.emit(
-      this.inputSearchForm.value.inputSearch.toLowerCase().trim()
+      this.inputSearchForm.value.inputSearch.toLowerCase().trim(),
     );
     this.inputSearchForm.reset();
   }

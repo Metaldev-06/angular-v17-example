@@ -9,11 +9,12 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { Datum } from '@src/app/core/interfaces/course-data/course-data';
 import { BlogDataService } from '@src/app/core/services/blog-data/blog-data.service';
 import { SkeletonPostCardComponent } from '../../../shared/skeleton-post-card/skeleton-post-card.component';
+import { TranslocoPipe } from '@ngneat/transloco';
 
 @Component({
   selector: 'app-blog-courses',
   standalone: true,
-  imports: [SkeletonPostCardComponent],
+  imports: [SkeletonPostCardComponent, TranslocoPipe],
   templateUrl: './blog-courses.component.html',
   styleUrl: './blog-courses.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

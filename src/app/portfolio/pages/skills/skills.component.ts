@@ -6,6 +6,7 @@ import {
   signal,
 } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { TranslocoPipe } from '@ngneat/transloco';
 import { SkillsDatum } from '@src/app/core/interfaces/home-data/home-data';
 import { HomeDataService } from '@src/app/core/services/home-data/home-data.service';
 import { AtroposComponent } from '@src/app/shared/atropos/atropos.component';
@@ -16,7 +17,7 @@ import { SkeletonModule } from 'primeng/skeleton';
 @Component({
   selector: 'app-skills',
   standalone: true,
-  imports: [AtroposComponent, TitleComponent, SkeletonModule],
+  imports: [AtroposComponent, TitleComponent, SkeletonModule, TranslocoPipe],
   templateUrl: './skills.component.html',
   styleUrl: './skills.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -49,16 +50,16 @@ export class SkillsComponent {
 
   setData() {
     this.frontend.set(
-      this.skills().filter((skill) => skill.attributes.stack === 'frontend')
+      this.skills().filter((skill) => skill.attributes.stack === 'frontend'),
     );
     this.backend.set(
-      this.skills().filter((skill) => skill.attributes.stack === 'backend')
+      this.skills().filter((skill) => skill.attributes.stack === 'backend'),
     );
     this.database.set(
-      this.skills().filter((skill) => skill.attributes.stack === 'database')
+      this.skills().filter((skill) => skill.attributes.stack === 'database'),
     );
     this.library.set(
-      this.skills().filter((skill) => skill.attributes.stack === 'library')
+      this.skills().filter((skill) => skill.attributes.stack === 'library'),
     );
   }
 }

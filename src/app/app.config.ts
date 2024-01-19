@@ -1,4 +1,8 @@
-import { ApplicationConfig, importProvidersFrom } from '@angular/core';
+import {
+  ApplicationConfig,
+  importProvidersFrom,
+  isDevMode,
+} from '@angular/core';
 import {
   provideRouter,
   withComponentInputBinding,
@@ -11,14 +15,12 @@ import { provideAnimations } from '@angular/platform-browser/animations';
 import localeEsAr from '@angular/common/locales/es-AR';
 import { registerLocaleData } from '@angular/common';
 
-import {
-  CLIPBOARD_OPTIONS,
-  ClipboardOptions,
-  MarkdownModule,
-} from 'ngx-markdown';
+import { CLIPBOARD_OPTIONS, MarkdownModule } from 'ngx-markdown';
 
 import { routes } from './app.routes';
 import { ClipboardButtonComponent } from './shared/clipboard-button/clipboard-button.component';
+import { TranslocoHttpLoader } from './transloco-loader';
+import { provideTransloco } from '@ngneat/transloco';
 
 registerLocaleData(localeEsAr);
 
@@ -40,5 +42,15 @@ export const appConfig: ApplicationConfig = {
       ReactiveFormsModule,
     ]),
     provideAnimations(),
+    provideTransloco({
+      config: {
+        availableLangs: ['en', 'es'],
+        defaultLang: 'es',
+        // Remove this option if your application doesn't support changing language in runtime.
+        reRenderOnLangChange: true,
+        prodMode: !isDevMode(),
+      },
+      loader: TranslocoHttpLoader,
+    }),
   ],
 };

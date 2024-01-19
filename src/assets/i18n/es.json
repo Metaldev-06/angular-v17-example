@@ -1,0 +1,47 @@
+{
+  "layout-portfolio": {
+    "projects": "proyectos",
+    "skills": "habilidades",
+    "blog": "blog",
+    "educations": "educación",
+    "about-me": "Acerca de mí",
+    "contact": "contacto",
+    "home": "inicio",
+    "copy": "Diseñado por MetalDev",
+    "certifications": "certificaciones",
+    "front": "Frontend",
+    "back": "Backend",
+    "database": "Base de Datos",
+    "library": "Librerías",
+    "contact-message": "Gracias por visitar mi portafolio. Si tienes alguna pregunta, comentario o simplemente quieres saludar, no dudes en ponerte en contacto conmigo. Siempre estaré feliz de escuchar tus ideas y colaborar en proyectos interesantes. Puedes contactar conmigo a través del formulario de contacto o vía correo electrónico. ¡Espero con interés escuchar de usted pronto!",
+    "form-contact": "formulario de contacto",
+    "form-subject": "Asunto",
+    "form-message": "Mensaje",
+    "form-send-message": "enviar mensaje",
+    "form-sending-message": "enviando mensaje",
+    "error-message": "❌ Error al enviar el correo, complete todos los campos correctamente",
+    "success-message": "✅ El correo se ha enviado correctamente"
+  },
+  "layout-blog": {
+    "home": "inicio",
+    "course": "curso",
+    "portfolio": "portfolio",
+    "search": "Buscar...",
+    "posts": "publicaciones",
+    "courses": "cursos",
+    "latest-post": "últimos posts",
+    "learn": "Aprende",
+    "good-practices": "las buenas prácticas",
+    "slogan": "Tu lugar para aprender programación web",
+    "view-more": "Ver más",
+    "view-video": "Ver video"
+  },
+  "messages": {
+    "copied": "Copiado",
+    "status-front": "Estado del front",
+    "status-back": "Estado del backend",
+    "status-front-active": "El backend está activo",
+    "status-back-inactive": "El backend está inactivo",
+    "status-without-backend": "No necesita un backend"
+  }
+}

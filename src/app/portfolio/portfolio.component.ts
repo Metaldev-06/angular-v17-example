@@ -29,6 +29,7 @@ export class PortfolioComponent {
   public userData = signal<DataAttributes>({} as DataAttributes);
 
   private readonly homeDataService = inject(HomeDataService);
+
   private readonly destroyRef = inject(DestroyRef);
 
   ngOnInit(): void {

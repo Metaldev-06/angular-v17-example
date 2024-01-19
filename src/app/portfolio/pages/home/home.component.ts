@@ -17,6 +17,7 @@ import { SkeletonPostCardComponent } from '@src/app/shared/skeleton-post-card/sk
 import { RouterLink } from '@angular/router';
 import { TitleComponent } from '@src/app/shared/title/title.component';
 import { SkeletonCardImageComponent } from '@src/app/shared/skeleton-card-image/skeleton-card-image.component';
+import { TranslocoPipe } from '@ngneat/transloco';
 
 @Component({
   selector: 'app-home',
@@ -31,6 +32,7 @@ import { SkeletonCardImageComponent } from '@src/app/shared/skeleton-card-image/
     TitleComponent,
     RouterLink,
     SkeletonCardImageComponent,
+    TranslocoPipe,
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
