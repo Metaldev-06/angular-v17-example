@@ -18,7 +18,7 @@ export class i18nService {
   }
 
   public getCurrentLanguage() {
-    this.currentLanguage();
+    return this.currentLanguage();
   }
 
   public setCurrentLanguage(lang: string) {

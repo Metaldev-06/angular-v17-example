@@ -14,6 +14,7 @@ import { FooterComponent } from './layout/footer/footer.component';
 import { DataAttributes } from '../core/interfaces/home-data/home-data';
 import { HomeDataService } from '../core/services/home-data/home-data.service';
 import { LoaderComponent } from '../shared/loader/loader.component';
+import { i18nService } from '../core/services/transloco/i18n.service';
 
 @Component({
   selector: 'app-portfolio',
@@ -27,12 +28,16 @@ export class PortfolioComponent {
   public loading = signal<boolean>(false);
 
   public userData = signal<DataAttributes>({} as DataAttributes);
+  public selectedLanguage = signal<string>('');
 
   private readonly homeDataService = inject(HomeDataService);
+  private readonly i18nService = inject(i18nService);
 
   private readonly destroyRef = inject(DestroyRef);
 
   ngOnInit(): void {
+    this.selectedLanguage.set(this.i18nService.getCurrentLanguage());
+
     this.loading.set(true);
     this.homeDataService.homeData$
       .pipe(takeUntilDestroyed(this.destroyRef))
@@ -43,7 +48,7 @@ export class PortfolioComponent {
 
     if (Object.keys(this.userData()).length === 0) {
       this.homeDataService
-        .getData()
+        .getData(this.selectedLanguage())
         .pipe(takeUntilDestroyed(this.destroyRef))
         .subscribe({
           next: (resp) => {

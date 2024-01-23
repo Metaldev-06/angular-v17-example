@@ -21,17 +21,18 @@ export class AppComponent implements OnInit {
   }
 
   getLang() {
-    const lang = JSON.parse(localStorage.getItem('lang') || '');
+    const lang = JSON.parse(localStorage.getItem('lang')!);
     const userLang = navigator.language;
     var codeLang = userLang.split('-')[0];
+
+    if (lang) {
+      this.i18nService.setCurrentLanguage(lang);
+      return;
+    }
 
     if (codeLang === 'es' || codeLang === 'en') {
       this.i18nService.setCurrentLanguage(codeLang);
       return;
-    }
-
-    if (lang) {
-      this.i18nService.setCurrentLanguage(lang);
     } else {
       this.i18nService.setCurrentLanguage(
         this.translocoService.getActiveLang(),
