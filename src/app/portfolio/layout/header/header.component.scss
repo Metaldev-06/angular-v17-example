@@ -48,7 +48,15 @@
         }
       }
 
-      button {
+      select {
+        padding: .3rem .8rem;
+        border-radius: $border-radius-x1;
+      }
+
+
+
+
+      .sideMenuButton {
         padding: .5rem;
         border-radius: $border-radius-x1;
         display: none;

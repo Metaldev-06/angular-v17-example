@@ -6,6 +6,7 @@ import {
   DestroyRef,
   HostListener,
   OnInit,
+  ViewChild,
   inject,
   signal,
 } from '@angular/core';
@@ -18,6 +19,7 @@ import { HomeDataService } from '@src/app/core/services/home-data/home-data.serv
 import { TransitionNameDirective } from '@src/app/shared/directives/view-transition/transition-name.directive';
 
 import { SidebarModule } from 'primeng/sidebar';
+import { MatMenuModule, MatMenuTrigger } from '@angular/material/menu';
 
 interface NavItem {
   name: string;
@@ -37,6 +39,7 @@ interface NavItem {
     NgOptimizedImage,
     TranslocoPipe,
     FormsModule,
+    MatMenuModule,
   ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
@@ -68,6 +71,7 @@ export class HeaderComponent implements OnInit {
     },
   ]);
   public selectedLanguage: string = '';
+  public selectedLanguageBlog: string = '';
 
   private readonly translocoService = inject(TranslocoService);
   private readonly i18nService = inject(i18nService);
@@ -75,8 +79,15 @@ export class HeaderComponent implements OnInit {
   private readonly blogDataService = inject(BlogDataService);
   private readonly destroyRef = inject(DestroyRef);
 
+  @ViewChild(MatMenuTrigger) trigger!: MatMenuTrigger;
+
+  someMethod() {
+    this.trigger.openMenu();
+  }
+
   ngOnInit(): void {
     this.selectedLanguage = this.i18nService.getCurrentLanguage();
+    this.selectedLanguageBlog = this.i18nService.getCurrentLanguage();
   }
 
   changeLanguage() {
@@ -86,8 +97,14 @@ export class HeaderComponent implements OnInit {
   }
 
   changeLanguageData() {
+    if (this.selectedLanguageBlog === 'es') {
+      this.selectedLanguageBlog = 'es-AR';
+    } else {
+      this.selectedLanguageBlog = this.selectedLanguageBlog;
+    }
+
     this.homeDataService
-      .getData(this.selectedLanguage)
+      .getData(this.selectedLanguageBlog)
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe({
         next: (resp) => {
@@ -102,10 +119,11 @@ export class HeaderComponent implements OnInit {
       });
 
     this.blogDataService
-      .getLatestPosts()
+      .getLatestPosts(this.selectedLanguage)
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe((res) => {
-        sessionStorage.setItem('latestPosts', JSON.stringify(res.data));
+        this.blogDataService.setLatestPostData(res);
+        console.log(res);
       });
   }
 

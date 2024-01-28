@@ -6,7 +6,6 @@ import {
   inject,
   signal,
 } from '@angular/core';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { RouterLink } from '@angular/router';
 import { TranslocoPipe } from '@ngneat/transloco';
 import { PostDatum } from '@src/app/core/interfaces/post-data/post-data';
@@ -34,26 +33,16 @@ export class BlogsSectionComponent {
   public posts = signal<PostDatum[]>([]);
 
   private readonly blogDataService = inject(BlogDataService);
-  private readonly destroyRef = inject(DestroyRef);
 
   ngOnInit(): void {
     this.getPosts();
   }
 
   getPosts() {
-    const latestPosts = sessionStorage.getItem('latestPosts');
-
-    if (latestPosts) {
-      this.posts.set(JSON.parse(latestPosts));
-      return;
-    }
-
-    this.blogDataService
-      .getLatestPosts()
-      .pipe(takeUntilDestroyed(this.destroyRef))
-      .subscribe((res) => {
-        this.posts.set(res.data);
-        sessionStorage.setItem('latestPosts', JSON.stringify(res.data));
-      });
+    this.blogDataService.latestPostData$.subscribe({
+      next: (resp) => {
+        this.posts.set(resp.data);
+      },
+    });
   }
 }

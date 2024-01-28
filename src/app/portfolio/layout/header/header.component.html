@@ -29,14 +29,21 @@
           </li>
         }
 
-        <select [(ngModel)]="selectedLanguage" (change)="changeLanguage()">
-          <option value="es">Español</option>
-          <option value="en">English</option>
-          <!-- Agrega más opciones según tus necesidades -->
-        </select>
+        <div class="content-select">
+          <select [(ngModel)]="selectedLanguage" (change)="changeLanguage()">
+            <option value="es">
+              <span>Español</span>
+            </option>
+            <option value="en">English</option>
+          </select>
+        </div>
       </ul>
 
-      <button (click)="showSidebar = true" aria-label="menu">
+      <button
+        class="sideMenuButton"
+        (click)="showSidebar = true"
+        aria-label="menu"
+      >
         <i class="pi pi-bars"></i>
       </button>
     </nav>
@@ -63,6 +70,14 @@
           {{ item.name | transloco | uppercase }}
         </li>
       }
+      <div class="content-select">
+        <select [(ngModel)]="selectedLanguage" (change)="changeLanguage()">
+          <option value="es">
+            <span>Español</span>
+          </option>
+          <option value="en">English</option>
+        </select>
+      </div>
     </ul>
   </div>
 </p-sidebar>

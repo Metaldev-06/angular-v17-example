@@ -15,18 +15,28 @@ export class BlogDataService {
   private blogData: BehaviorSubject<PostData> = new BehaviorSubject(
     {} as PostData,
   );
+  private latestPostData: BehaviorSubject<PostData> = new BehaviorSubject(
+    {} as PostData,
+  );
+
   private selectedLanguage = signal<string>('');
 
   public blogData$ = this.blogData.asObservable();
+  public latestPostData$ = this.latestPostData.asObservable();
 
   private readonly http = inject(HttpClient);
   private readonly i18nService = inject(i18nService);
 
   constructor() {
     const blogDataStorage = sessionStorage.getItem('blogData');
+    const latestPostsStorage = sessionStorage.getItem('latestPost');
 
     if (blogDataStorage) {
       this.blogData.next(JSON.parse(blogDataStorage));
+    }
+
+    if (latestPostsStorage) {
+      this.latestPostData.next(JSON.parse(latestPostsStorage));
     }
 
     const language = this.i18nService.getCurrentLanguage();
@@ -44,6 +54,15 @@ export class BlogDataService {
 
   clearBlogData() {
     sessionStorage.removeItem('blogData');
+  }
+
+  setLatestPostData(data: PostData) {
+    sessionStorage.setItem('latestPost', JSON.stringify(data));
+    this.latestPostData.next(data);
+  }
+
+  clearLatestPostData() {
+    sessionStorage.removeItem('latestPost');
   }
 
   // private getCommonParams(): HttpParams {
@@ -79,12 +98,15 @@ export class BlogDataService {
     return this.http.get<PostData>(`${this.apiUrl}/posts`, { params });
   }
 
-  getLatestPosts(): Observable<PostData> {
+  getLatestPosts(locale: string): Observable<PostData> {
+    if (locale === 'es') {
+      locale = 'es-AR';
+    }
     const params = new HttpParams()
       .set('sort', 'publishedAt:desc')
       .set('pagination[limit]', '4')
       .set('populate', '*')
-      .set('locale', this.selectedLanguage());
+      .set('locale', locale || this.selectedLanguage());
 
     return this.http.get<PostData>(`${this.apiUrl}/posts`, { params });
   }

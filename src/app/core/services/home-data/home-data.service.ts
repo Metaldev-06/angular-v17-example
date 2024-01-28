@@ -16,7 +16,6 @@ export class HomeDataService {
   private homeData: BehaviorSubject<DataAttributes> = new BehaviorSubject(
     {} as DataAttributes,
   );
-  private lang = signal<string>('');
   public homeData$ = this.homeData.asObservable();
 
   private readonly apiUrl = environment.apiUrl;
