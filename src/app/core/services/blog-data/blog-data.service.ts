@@ -5,6 +5,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { PostData } from '../../interfaces/post-data/post-data';
 import { CourseData } from '../../interfaces/course-data/course-data';
 import { i18nService } from '../transloco/i18n.service';
+import { Locale } from '../../interfaces/project-data/project-data';
 
 @Injectable({
   providedIn: 'root',
@@ -78,13 +79,17 @@ export class BlogDataService {
   //   );
   // }
 
-  getPosts(page = 1): Observable<PostData> {
+  getPosts(page = 1, locale: string): Observable<PostData> {
+    if (locale === 'es') {
+      locale = 'es-AR';
+    }
+
     let params = new HttpParams()
       .set('sort', 'publishedAt:desc')
       .set('pagination[pageSize]', '8')
       .set('pagination[page]', page)
       .set('populate', '*')
-      .set('locale', this.selectedLanguage());
+      .set('locale', locale || this.selectedLanguage());
 
     return this.http.get<PostData>(`${this.apiUrl}/posts`, { params });
   }
@@ -111,33 +116,45 @@ export class BlogDataService {
     return this.http.get<PostData>(`${this.apiUrl}/posts`, { params });
   }
 
-  getCoursesByYoutube(): Observable<CourseData> {
+  getCoursesByYoutube(locale: string): Observable<CourseData> {
+    if (locale === 'es') {
+      locale = 'es-AR';
+    }
+
     const params = new HttpParams()
       .set('populate', '*')
-      .set('locale', this.selectedLanguage());
+      .set('locale', locale || this.selectedLanguage());
 
     return this.http.get<CourseData>(`${this.apiUrl}/courses`, {
       params,
     });
   }
 
-  searchPost(query: string): Observable<PostData> {
+  searchPost(query: string, locale: string): Observable<PostData> {
+    if (locale === 'es') {
+      locale = 'es-AR';
+    }
+
     const params = new HttpParams()
       .set('filters[$or][0][title][$containsi]', query)
       .set('filters[$or][1][technology][$containsi]', query)
       .set('pagination[limit]', '5')
       .set('populate', '*')
-      .set('locale', this.selectedLanguage());
+      .set('locale', locale || this.selectedLanguage());
     return this.http.get<PostData>(`${this.apiUrl}/posts`, { params });
   }
 
-  searchCourse(query: string): Observable<CourseData> {
+  searchCourse(query: string, locale: string): Observable<CourseData> {
+    if (locale === 'es') {
+      locale = 'es-AR';
+    }
+
     const params = new HttpParams()
       .set('filters[$or][0][title][$containsi]', query)
       .set('filters[$or][1][technology][$containsi]', query)
       .set('populate', '*')
       .set('pagination[limit]', '5')
-      .set('locale', this.selectedLanguage());
+      .set('locale', locale || this.selectedLanguage());
     return this.http.get<CourseData>(`${this.apiUrl}/courses`, { params });
   }
 }

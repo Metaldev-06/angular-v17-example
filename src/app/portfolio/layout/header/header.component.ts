@@ -124,7 +124,20 @@ export class HeaderComponent implements OnInit {
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe((res) => {
         this.blogDataService.setLatestPostData(res);
-        // console.log(res);
+      });
+
+    this.blogDataService
+      .getPosts(1, this.selectedLanguage)
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe((res) => {
+        this.blogDataService.setBlogData(res);
+      });
+
+    this.blogDataService
+      .getCoursesByYoutube(this.selectedLanguage)
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe((res) => {
+        sessionStorage.setItem('courses', JSON.stringify(res.data));
       });
   }
 

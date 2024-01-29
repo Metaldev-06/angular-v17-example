@@ -2,7 +2,7 @@
   @if (!isEmpty()) {
     <article class="searcher__card--container">
       <div class="post__container">
-        <h2>Posts</h2>
+        <h2>{{ "layout-blog.posts" | transloco | titlecase }}</h2>
         <div class="card__container">
           @for (post of posts(); track post) {
             <div class="card" (click)="goToPost(post)">
@@ -43,7 +43,7 @@
       </div>
 
       <div class="courses__container">
-        <h2>Cursos</h2>
+        <h2>{{ "layout-blog.courses" | transloco | titlecase }}</h2>
         <div class="card__container">
           @for (course of courses(); track course) {
             <a class="card" [href]="course.attributes.url" target="_blank">
@@ -86,7 +86,8 @@
   } @else if (showEmptyMessage()) {
     <article>
       <h1>
-        No se ha encontrado nada con: <span class="query">"{{ query() }}"</span>
+        <span> {{ "layout-blog.search-not-found" | transloco }} </span>
+        <span class="query">"{{ query() }}"</span>
       </h1>
     </article>
   }

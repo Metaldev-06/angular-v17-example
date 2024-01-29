@@ -34,7 +34,8 @@
     "good-practices": "las buenas prácticas",
     "slogan": "Tu lugar para aprender programación web",
     "view-more": "Ver más",
-    "view-video": "Ver video"
+    "view-video": "Ver video",
+    "search-not-found": "No se ha encontrado nada con: "
   },
   "messages": {
     "copied": "Copiado",

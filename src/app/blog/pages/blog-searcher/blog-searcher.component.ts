@@ -8,16 +8,24 @@ import {
 } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import { TranslocoPipe } from '@ngneat/transloco';
 import { Datum } from '@src/app/core/interfaces/course-data/course-data';
 import { PostDatum } from '@src/app/core/interfaces/post-data/post-data';
 import { BlogDataService } from '@src/app/core/services/blog-data/blog-data.service';
+import { i18nService } from '@src/app/core/services/transloco/i18n.service';
 import { TransitionNameDirective } from '@src/app/shared/directives/view-transition/transition-name.directive';
 import { forkJoin } from 'rxjs';
 
 @Component({
   selector: 'app-blog-searcher',
   standalone: true,
-  imports: [TitleCasePipe, DatePipe, RouterLink, TransitionNameDirective],
+  imports: [
+    TitleCasePipe,
+    DatePipe,
+    RouterLink,
+    TransitionNameDirective,
+    TranslocoPipe,
+  ],
   templateUrl: './blog-searcher.component.html',
   styleUrl: './blog-searcher.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -28,11 +36,13 @@ export class BlogSearcherComponent {
   public query = signal<string>('');
   public isEmpty = signal<boolean>(true);
   public showEmptyMessage = signal<boolean>(false);
+  public selectedLanguage = signal<string>('');
 
   private readonly route = inject(ActivatedRoute);
   private readonly blogDataService = inject(BlogDataService);
   private readonly destroyRef = inject(DestroyRef);
   private readonly router = inject(Router);
+  private readonly i18nService = inject(i18nService);
 
   ngOnInit(): void {
     this.getQueryParams();
@@ -41,6 +51,7 @@ export class BlogSearcherComponent {
   }
 
   private getQueryParams(): void {
+    this.selectedLanguage.set(this.i18nService.getCurrentLanguage());
     this.route.queryParams
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe((params) => {
@@ -50,8 +61,14 @@ export class BlogSearcherComponent {
 
   private searcher(query: string): void {
     // Creamos dos observables para las dos peticiones
-    const searchPost$ = this.blogDataService.searchPost(query);
-    const searchCourse$ = this.blogDataService.searchCourse(query);
+    const searchPost$ = this.blogDataService.searchPost(
+      query,
+      this.selectedLanguage(),
+    );
+    const searchCourse$ = this.blogDataService.searchCourse(
+      query,
+      this.selectedLanguage(),
+    );
 
     // Usamos forkJoin para combinar ambas observables
     forkJoin([searchPost$, searchCourse$])
