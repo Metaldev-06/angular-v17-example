@@ -3,12 +3,11 @@ import {
   ChangeDetectionStrategy,
   Component,
   DestroyRef,
-  Output,
   inject,
   signal,
 } from '@angular/core';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { RouterLink } from '@angular/router';
+import { TranslocoPipe } from '@ngneat/transloco';
 import { PostDatum } from '@src/app/core/interfaces/post-data/post-data';
 import { BlogDataService } from '@src/app/core/services/blog-data/blog-data.service';
 import { CardPostComponent } from '@src/app/shared/card-post/card-post.component';
@@ -24,6 +23,7 @@ import { TitleComponent } from '@src/app/shared/title/title.component';
     RouterLink,
     CardPostComponent,
     SkeletonPostCardComponent,
+    TranslocoPipe,
   ],
   templateUrl: './blogs-section.component.html',
   styleUrl: './blogs-section.component.scss',
@@ -33,26 +33,16 @@ export class BlogsSectionComponent {
   public posts = signal<PostDatum[]>([]);
 
   private readonly blogDataService = inject(BlogDataService);
-  private readonly destroyRef = inject(DestroyRef);
 
   ngOnInit(): void {
     this.getPosts();
   }
 
   getPosts() {
-    const latestPosts = sessionStorage.getItem('latestPosts');
-
-    if (latestPosts) {
-      this.posts.set(JSON.parse(latestPosts));
-      return;
-    }
-
-    this.blogDataService
-      .getLatestPosts()
-      .pipe(takeUntilDestroyed(this.destroyRef))
-      .subscribe((res) => {
-        this.posts.set(res.data);
-        sessionStorage.setItem('latestPosts', JSON.stringify(res.data));
-      });
+    this.blogDataService.latestPostData$.subscribe({
+      next: (resp) => {
+        this.posts.set(resp.data);
+      },
+    });
   }
 }

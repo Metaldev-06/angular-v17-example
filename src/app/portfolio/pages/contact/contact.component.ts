@@ -1,3 +1,4 @@
+import { UpperCasePipe } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
 import {
@@ -6,11 +7,12 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
+import { TranslocoPipe } from '@ngneat/transloco';
 
 @Component({
   selector: 'app-contact',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, TranslocoPipe, UpperCasePipe],
   templateUrl: './contact.component.html',
   styleUrl: './contact.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -40,9 +42,7 @@ export class ContactComponent {
 
     if (this.datos.invalid) {
       this.isLoading.set(false);
-      this.message.set(
-        ' ❌ Error al enviar el correo, complete todos los campos correctamente'
-      );
+      this.message.set('layout-portfolio.error-message');
 
       setTimeout(() => {
         this.message.set('');
@@ -58,7 +58,7 @@ export class ContactComponent {
 
           if (this.datos.valid) {
             this.isLoading.set(false);
-            this.message.set(' ✅ El correo se ha enviado correctamente');
+            this.message.set('layout-portfolio.success-message');
 
             setTimeout(() => {
               this.message.set('');

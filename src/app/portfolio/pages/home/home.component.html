@@ -7,7 +7,10 @@
 } @placeholder {
   <div class="container">
     <div class="center">
-      <app-title [title]="'proyectos'" [routerLink]="['/projects']" />
+      <app-title
+        [title]="'layout-portfolio.projects' | transloco"
+        [routerLink]="['/projects']"
+      />
     </div>
     <app-skeleton-card-image />
   </div>
@@ -17,7 +20,10 @@
 } @placeholder {
   <div class="container">
     <div class="center">
-      <app-title [title]="'blog'" [routerLink]="['/blog']" />
+      <app-title
+        [title]="'layout-portfolio.blog' | transloco"
+        [routerLink]="['/blog']"
+      />
     </div>
     <app-skeleton-post-card [items]="[1, 2, 3, 4]" />
   </div>

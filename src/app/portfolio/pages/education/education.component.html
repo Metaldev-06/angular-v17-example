@@ -1,13 +1,13 @@
 <section class="education__container container">
   <article class="education__content">
-    <app-title [title]="'educación'" />
+    <app-title [title]="'layout-portfolio.educations' | transloco" />
 
     <div class="timeline__content">
       <app-timeline [timelineData]="educations()" />
     </div>
   </article>
   <article class="certification__container">
-    <h2>Certificaciones</h2>
+    <h2>{{ "layout-portfolio.certifications" | transloco | titlecase }}</h2>
 
     @if (certifications()) {
       <div class="certification__card">

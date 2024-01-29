@@ -1,0 +1,48 @@
+{
+  "layout-portfolio": {
+    "projects": "projects",
+    "skills": "skills",
+    "blog": "blog",
+    "educations": "educations",
+    "about-me": "About me",
+    "contact": "contact",
+    "home": "home",
+    "copy": "Designed by MetalDev",
+    "certifications": "certifications",
+    "front": "Frontend",
+    "back": "Backend",
+    "database": "Database",
+    "library": "Libraries",
+    "contact-message": "Thank you for visiting my portfolio. If you have any questions, comments, or just want to say hi, feel free to contact me. I will always be happy to listen to your ideas and collaborate on interesting projects. You can contact me through the contact form or via email. I look forward to hearing from you soon!",
+    "form-contact": "contact form",
+    "form-subject": "Subject",
+    "form-message": "Message",
+    "form-send-message": "send message",
+    "form-sending-message": "sending message",
+    "error-message": "❌ Error sending email, please complete all fields correctly",
+    "success-message": "✅ The email has been sent successfully"
+  },
+  "layout-blog": {
+    "home": "home",
+    "course": "course",
+    "portfolio": "portfolio",
+    "search": "Search...",
+    "posts": "posts",
+    "courses": "courses",
+    "latest-post": "latest post",
+    "learn": "Learn",
+    "good-practices": "the good practices",
+    "slogan": "Your place to learn web programming",
+    "view-more": "View more",
+    "view-video": "View video",
+    "search-not-found": "Nothing has been found with: "
+  },
+  "messages": {
+    "copied": "Copied",
+    "status-front": "Status frontend",
+    "status-back": "Status backend",
+    "status-front-active": "The backend is active",
+    "status-back-inactive": "The backend is inactive",
+    "status-without-backend": "Doesn't need a backend"
+  }
+}

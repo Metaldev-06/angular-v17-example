@@ -5,10 +5,11 @@
     <div class="banner__content">
       <div class="text__container">
         <h1>
-          Aprende <br />
-          las buenas prácticas
+          <span> {{ "layout-blog.learn" | transloco }} </span>
+          <br />
+          <span> {{ "layout-blog.good-practices" | transloco }} </span>
         </h1>
-        <p>Tu lugar para aprender programación web</p>
+        <p>{{ "layout-blog.slogan" | transloco }}</p>
       </div>
 
       <div class="image__container--banner">
@@ -18,7 +19,7 @@
   </article>
 
   <article class="post__container container">
-    <h2>Últimos Posts</h2>
+    <h2>{{ "layout-blog.latest-post" | transloco | titlecase }}</h2>
     @if (posts()) {
       <div class="card__container">
         @for (post of posts(); track post) {
@@ -37,7 +38,7 @@
         (click)="nextPage()"
         [ngStyle]="{ opacity: showButtonPage() ? 1 : 0.4 }"
       >
-        Ver más
+        {{ "layout-blog.view-more" | transloco }}
       </button>
     </div>
   }

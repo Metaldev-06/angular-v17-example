@@ -17,7 +17,8 @@
               ? 'El frontend está activo'
               : 'El frontend está inactivo'
           "
-          >Estado del front:
+        >
+          {{ "messages.status-front" | transloco }}
           <i
             class="pi pi-circle-fill"
             [ngClass]="{
@@ -28,35 +29,36 @@
         </span>
 
         @if (data.project.server_status !== null) {
-        <span
-          [title]="
-            data.project.server_status
-              ? 'El backend está activo'
-              : 'El backend está inactivo'
-          "
-          >Estado del backend:
-          <i
-            class="pi pi-circle-fill"
-            [ngClass]="{
-              online: data.project.server_status,
-              offline: !data.project.server_status
-            }"
-          ></i>
-        </span>
+          <span
+            [title]="
+              data.project.server_status
+                ? 'messages.status-front-active'
+                : ('messages.status-front-inactive' | transloco)
+            "
+          >
+            {{ "messages.status-back" | transloco }}
+            <i
+              class="pi pi-circle-fill"
+              [ngClass]="{
+                online: data.project.server_status,
+                offline: !data.project.server_status
+              }"
+            ></i>
+          </span>
         } @else {
-        <span title="No necesita un backend">
-          Estado del backend:
-          <i class="pi pi-circle-fill withoutServer"></i>
-        </span>
+          <span [title]="'messages.status-without-backend' | transloco">
+            {{ "messages.status-back" | transloco }}
+            <i class="pi pi-circle-fill withoutServer"></i>
+          </span>
         }
       </div>
     </div>
 
     <div class="technologies__container">
       @for (item of data.project.technology; track item) {
-      <span class="tags">
-        {{ item | titlecase }}
-      </span>
+        <span class="tags">
+          {{ item | titlecase }}
+        </span>
       }
     </div>
 

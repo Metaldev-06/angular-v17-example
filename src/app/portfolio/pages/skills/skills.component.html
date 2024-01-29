@@ -1,10 +1,11 @@
 <section class="skills__container container">
-  <app-title [title]="'habilidades'" />
+  <app-title [title]="'layout-portfolio.skills' | transloco" />
 
   @if (skills().length > 0) {
     <article class="skills__card--container">
       <div class="skill__stack">
-        <h2>Frontend</h2>
+        <h2>{{ "layout-portfolio.front" | transloco }}</h2>
+
         <div class="skills__content">
           @for (skill of frontend(); track skill; let index = $index) {
             <app-atropos
@@ -17,7 +18,8 @@
       </div>
 
       <div class="skill__stack">
-        <h2>Backend</h2>
+        <h2>{{ "layout-portfolio.back" | transloco }}</h2>
+
         <div class="skills__content">
           @for (skill of backend(); track skill; let index = $index) {
             <app-atropos
@@ -30,7 +32,7 @@
       </div>
 
       <div class="skill__stack">
-        <h2>Base de Datos</h2>
+        <h2>{{ "layout-portfolio.database" | transloco }}</h2>
 
         <div class="skills__content">
           @for (skill of database(); track skill; let index = $index) {
@@ -44,7 +46,7 @@
       </div>
 
       <div class="skill__stack">
-        <h2>Librerías</h2>
+        <h2>{{ "layout-portfolio.library" | transloco }}</h2>
 
         <div class="skills__content">
           @for (skill of library(); track skill; let index = $index) {

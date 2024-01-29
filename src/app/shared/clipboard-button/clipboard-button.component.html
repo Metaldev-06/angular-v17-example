@@ -7,5 +7,5 @@
 >
   <i class="pi" [ngClass]="{ 'pi-check': copied(), 'pi-copy': !copied() }"></i>
 
-  <span *ngIf="copied()">Copiado</span>
+  <span *ngIf="copied()">{{ "messages.copied" | transloco }}</span>
 </button>

@@ -16,6 +16,7 @@ import { NgOptimizedImage } from '@angular/common';
 import { ImagePipe } from '@src/app/shared/pipes/image-pipe/image-pipe.pipe';
 import { TitleComponent } from '@src/app/shared/title/title.component';
 import { DialogComponent } from '@src/app/shared/dialog/dialog.component';
+import { TranslocoPipe } from '@ngneat/transloco';
 
 @Component({
   selector: 'app-projects-section',
@@ -26,6 +27,7 @@ import { DialogComponent } from '@src/app/shared/dialog/dialog.component';
     NgOptimizedImage,
     ImagePipe,
     TitleComponent,
+    TranslocoPipe,
   ],
   templateUrl: './projects-section.component.html',
   styleUrl: './projects-section.component.scss',

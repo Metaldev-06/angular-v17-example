@@ -8,6 +8,7 @@ import {
   signal,
 } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { TranslocoPipe } from '@ngneat/transloco';
 import {
   ProjectsDatum,
   TentacledAttributes,
@@ -28,6 +29,7 @@ import { TitleComponent } from '@src/app/shared/title/title.component';
     TitleComponent,
     DialogModule,
     SkeletonCardImageComponent,
+    TranslocoPipe,
   ],
   templateUrl: './projects.component.html',
   styleUrl: './projects.component.scss',

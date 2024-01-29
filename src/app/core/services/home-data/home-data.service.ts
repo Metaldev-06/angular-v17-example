@@ -1,5 +1,5 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { Injectable, inject } from '@angular/core';
+import { Injectable, inject, signal } from '@angular/core';
 import { environment } from '@src/environments/environment.development';
 import { BehaviorSubject, Observable } from 'rxjs';
 import {
@@ -7,6 +7,7 @@ import {
   HomeDataResponse,
 } from '../../interfaces/home-data/home-data';
 import { ProjectDataResponse } from '../../interfaces/project-data/project-data';
+import { i18nService } from '../transloco/i18n.service';
 
 @Injectable({
   providedIn: 'root',
@@ -29,7 +30,13 @@ export class HomeDataService {
     }
   }
 
-  getData(): Observable<HomeDataResponse> {
+  getData(lang?: string): Observable<HomeDataResponse> {
+    if (lang === 'es') {
+      lang = 'es-AR';
+    } else {
+      lang = 'en';
+    }
+
     const params = new HttpParams()
       .set('populate[0]', 'projects')
       .set('populate[1]', 'projects.image')
@@ -40,7 +47,8 @@ export class HomeDataService {
       .set('populate[6]', 'certifications')
       .set('populate[7]', 'certifications.image')
       .set('populate[8]', 'educations')
-      .set('populate[9]', 'educations.image');
+      .set('populate[9]', 'educations.image')
+      .set('locale', lang!);
 
     return this.http.get<HomeDataResponse>(`${this.apiUrl}/home`, { params });
   }

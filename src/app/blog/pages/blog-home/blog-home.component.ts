@@ -1,4 +1,4 @@
-import { NgStyle } from '@angular/common';
+import { NgStyle, TitleCasePipe } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -7,11 +7,13 @@ import {
   signal,
 } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { TranslocoPipe, TranslocoService } from '@ngneat/transloco';
 import {
   Pagination,
   PostDatum,
 } from '@src/app/core/interfaces/post-data/post-data';
 import { BlogDataService } from '@src/app/core/services/blog-data/blog-data.service';
+import { i18nService } from '@src/app/core/services/transloco/i18n.service';
 import { CardPostComponent } from '@src/app/shared/card-post/card-post.component';
 import { SkeletonPostCardComponent } from '@src/app/shared/skeleton-post-card/skeleton-post-card.component';
 import { SkeletonModule } from 'primeng/skeleton';
@@ -24,6 +26,8 @@ import { SkeletonModule } from 'primeng/skeleton';
     SkeletonModule,
     NgStyle,
     SkeletonPostCardComponent,
+    TranslocoPipe,
+    TitleCasePipe,
   ],
   templateUrl: './blog-home.component.html',
   styleUrl: './blog-home.component.scss',
@@ -33,11 +37,14 @@ export class BlogHomeComponent {
   public posts = signal<PostDatum[]>([]);
   public page = signal<Pagination>({} as Pagination);
   public showButtonPage = signal<boolean>(true);
+  public selectedLanguage = signal<string>('');
 
   private readonly blogDataService = inject(BlogDataService);
   private readonly destroyRef = inject(DestroyRef);
+  private readonly i18nService = inject(i18nService);
 
   ngOnInit(): void {
+    this.selectedLanguage.set(this.i18nService.getCurrentLanguage());
     this.getPosts();
 
     document.documentElement.scrollTop = 0;
@@ -60,7 +67,7 @@ export class BlogHomeComponent {
     }
 
     this.blogDataService
-      .getPosts(page)
+      .getPosts(page, this.selectedLanguage())
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe((res) => {
         this.posts.set(res.data);
@@ -86,7 +93,7 @@ export class BlogHomeComponent {
     }
 
     this.blogDataService
-      .getPosts(this.page().page)
+      .getPosts(this.page().page, this.selectedLanguage())
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe((res) => {
         this.posts.update((prev) => [...prev, ...res.data]);
