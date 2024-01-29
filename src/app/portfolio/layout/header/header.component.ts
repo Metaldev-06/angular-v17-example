@@ -104,17 +104,18 @@ export class HeaderComponent implements OnInit {
     }
 
     this.homeDataService
-      .getData(this.selectedLanguageBlog)
+      .getData(this.selectedLanguage)
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe({
         next: (resp) => {
           this.homeDataService.setHomeData(resp.data.attributes);
+          console.log(resp.data.attributes);
         },
         error: (error) => {
           console.error(error);
         },
         complete: () => {
-          console.log('complete');
+          // console.log('complete');
         },
       });
 
@@ -123,7 +124,7 @@ export class HeaderComponent implements OnInit {
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe((res) => {
         this.blogDataService.setLatestPostData(res);
-        console.log(res);
+        // console.log(res);
       });
   }
 

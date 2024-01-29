@@ -33,6 +33,8 @@ export class HomeDataService {
   getData(lang?: string): Observable<HomeDataResponse> {
     if (lang === 'es') {
       lang = 'es-AR';
+    } else {
+      lang = 'en';
     }
 
     const params = new HttpParams()
