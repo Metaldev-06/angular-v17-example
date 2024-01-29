@@ -48,7 +48,6 @@ export class PortfolioComponent {
       .subscribe((resp) => {
         this.userData.set(resp);
         this.loading.set(false);
-        console.log(resp);
       });
 
     if (Object.keys(this.userData()).length === 0) {

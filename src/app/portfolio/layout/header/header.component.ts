@@ -109,7 +109,6 @@ export class HeaderComponent implements OnInit {
       .subscribe({
         next: (resp) => {
           this.homeDataService.setHomeData(resp.data.attributes);
-          console.log(resp.data.attributes);
         },
         error: (error) => {
           console.error(error);
