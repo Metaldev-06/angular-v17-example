@@ -41,7 +41,9 @@
     "copied": "Copiado",
     "status-front": "Estado del front",
     "status-back": "Estado del backend",
-    "status-front-active": "El backend está activo",
+    "status-front-active": "El frontend está activo",
+    "status-front-inactive": "El frontend está inactivo",
+    "status-back-active": "El backend está activo",
     "status-back-inactive": "El backend está inactivo",
     "status-without-backend": "No necesita un backend"
   }

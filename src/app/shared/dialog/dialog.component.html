@@ -14,8 +14,8 @@
         <span
           [title]="
             data.project.deploy_status
-              ? 'El frontend está activo'
-              : 'El frontend está inactivo'
+              ? ('messages.status-front-active' | transloco)
+              : ('messages.status-front-inactive' | transloco)
           "
         >
           {{ "messages.status-front" | transloco }}
@@ -32,8 +32,8 @@
           <span
             [title]="
               data.project.server_status
-                ? 'messages.status-front-active'
-                : ('messages.status-front-inactive' | transloco)
+                ? ('messages.status-back-active' | transloco)
+                : ('messages.status-back-inactive' | transloco)
             "
           >
             {{ "messages.status-back" | transloco }}
